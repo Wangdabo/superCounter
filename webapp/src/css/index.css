@@ -1,0 +1,32 @@
+.divs{
+    height: 100px;
+}
+.btn2 {
+    height: 80px;
+    min-width: 100px;
+    margin: -2px 15px 0 15px;
+    /*border: 1px solid #ddd;*/
+    padding: 25px 0px 0px 0px;
+    background-color: #fafafa;
+    background-image: none;
+    filter: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    display: inline-block;
+    color: #646464;
+    text-shadow: none;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    line-height: normal;
+}
+.imgdiv {
+    height: 150px;
+    width: 200px;
+}
