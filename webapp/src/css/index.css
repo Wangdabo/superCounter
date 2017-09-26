@@ -28,5 +28,18 @@
 }
 .imgdiv {
     height: 150px;
-    width: 200px;
 }
+.smimgdiv{
+    height:100px;
+    width: 150px;
+}
+.tishidiv {
+    height: 300px;
+    width: 400px;
+}
+.backbtn{
+    position:absolute;
+    right:50px;
+    bottom:50px
+}
+
