@@ -161,19 +161,19 @@
         <div class="form-bodyform-body">
             <div class="form-group">
                 <label class="control-label col-md-4">姓名:</label>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <input type="text" class="form-control" ng-model="subFrom.personDetails.personName"/>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-md-4">性别:</label>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <input type="text" class="form-control" ng-model="subFrom.personDetails.personGender"/>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-md-4">电话:</label>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <input type="text" class="form-control" ng-model="subFrom.personDetails.phone"/>
                 </div>
             </div>
@@ -232,53 +232,127 @@
 </div>
 <!-- 信息确认 -->
 <div ng-show="pageflag == 5">
-    信息确认
     <div class="row">
-        <div style="float: right;">
-            <a href="javascript:;" class="btn2" ng-click="card.back()">
-                <i class="fa fa-arrow-circle-left fa-3x"></i>
-                <div>
-                    上一步
-                </div>
-            </a>
-            <a href="javascript:;" ng-click="card.next(pageflag)" class="btn2">
-                <i class="fa fa-arrow-circle-right fa-3x"></i>
-                <div>
-                    下一步
-                </div>
-            </a>
+        <div class="col-md-6">
+            <div>
+                <h1>尊敬的用户:{{subFrom.idcard.name}}</h1>
+                <h1>您即将开立我行{{subFrom.carditem.cardName}}</h1>
+                <h2>包括开通以下业务:</h2>
+                <h2 ng-repeat="d in subFrom.selectProduct">&nbsp;&nbsp;&nbsp;&nbsp;{{d.name}}</h2>
+            </div>
+            <div class="float-left">
+                <h2 ng-repeat="d in subFrom.selectProduct">其中{{d.name}}开通以下业务:
+                    <p ng-repeat="c in d.option">{{c.optionName}}</p>
+                </h2>
+            </div>
         </div>
+        <div class="col-md-6">
+            <h1>客户签名</h1>
+            <div class="float-left row">
+                <div class="col-md-4 col-md-offset-4">
+                    <button type="button" class="btn blue btn-block" ng-click="card.next(pageflag)">确认信息</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="backbtn">
+        <a href="javascript:;" class="btn2" ng-click="card.back()">
+            <i class="fa fa-arrow-circle-left fa-3x"></i>
+            <div>
+                上一步
+            </div>
+        </a>
     </div>
 </div>
 <!-- 设置密码 -->
 <div ng-show="pageflag == 6">
-    设置密码
-    <div class="row">
-        <div style="float: right;">
-            <a href="javascript:;" class="btn2" ng-click="card.back()">
-                <i class="fa fa-arrow-circle-left fa-3x"></i>
-                <div>
-                    上一步
+    <h1>
+        请输入账户密码，该密码将用于账务查询、转账、支付等功能！
+    </h1>
+    <form class="form-horizontal">
+        <div class="form-bodyform-body">
+            <div class="form-group">
+                <label class="control-label col-md-4">账户密码:</label>
+                <div class="col-md-4">
+                    <input type="password" class="form-control" ng-model="subFrom.passWord"/>
                 </div>
-            </a>
-            <a href="javascript:;" ng-click="card.next(pageflag)" class="btn2">
-                <i class="fa fa-arrow-circle-right fa-3x"></i>
-                <div>
-                    下一步
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-4">确认密码:</label>
+                <div class="col-md-4">
+                    <input type="password" class="form-control" ng-model="repassWord"/>
+                    <span style="color:red" ng-show="subFrom.passWord!=repassWord">两次密码不一致</span>
                 </div>
-            </a>
+            </div>
         </div>
-    </div>
+        <div class="form-actions">
+            <div class="row">
+                <div class="col-md-offset-4 col-md-4">
+                    <button type="button" ng-click="card.next(pageflag)" class="btn blue btn-block">确认密码</button>
+                </div>
+            </div>
+        </div>
+    </form>
 </div>
 <!-- 开户成功 -->
 <div ng-show="pageflag == 7">
-    开户成功
-    <div style="float: right;">
+
+
+    <h1>尊敬的客户，您已成功开户！</h1>
+    <h1>请妥善保管银行卡以及账户密码，谨防网络欺诈！</h1>
+
+
+    <div style="text-align:center">
         <a href="#/dashboard.html" ng-click="" class="btn2">
             <i class="fa fa-arrow-circle-right fa-3x"></i>
             <div>
-                完成
+                结束业务
             </div>
         </a>
+    </div>
+    <h1>你可以继续办理其他业务：</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="col-md-4">
+                <a href="#/dashboard.html" ng-click="" class="btn2">
+                    <i class="fa fa-arrow-circle-right fa-3x"></i>
+                    <div>
+                        结束业务
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="#/dashboard.html" ng-click="" class="btn2">
+                    <i class="fa fa-arrow-circle-right fa-3x"></i>
+                    <div>
+                        结束业务
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="#/dashboard.html" ng-click="" class="btn2">
+                    <i class="fa fa-arrow-circle-right fa-3x"></i>
+                    <div>
+                        结束业务
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="col-md-offset-6">
+                <a href="javascript:;" class="icon-btn">
+                    <i class="fa fa-qrcode"></i>
+                    <div>
+                        关注微信
+                    </div>
+                </a>
+                <a href="javascript:;" class="icon-btn">
+                    <i class="fa fa-qrcode"></i>
+                    <div>
+                        关注我行
+                    </div>
+                </a>
+            </div>
+        </div>
     </div>
 </div>

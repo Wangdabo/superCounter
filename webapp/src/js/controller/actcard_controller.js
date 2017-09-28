@@ -137,5 +137,24 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
     //确认签约
     card.sign = function (pageflag) {
         console.log($scope.productList)
+        //组装数据展示
+        var selectProduct = [];
+        //挑选用户选择项
+        for(var i in $scope.productList) {
+            var item = $scope.productList[i];
+            if(item.ischecked){
+                var product = {};
+                product.name = item.productName;
+                product.option = [];
+                for(var j in item.option){
+                    if(item.option[j].ischecked){
+                        product.option.push(item.option[j])
+                    }
+                }
+                selectProduct.push(product);
+            }
+        }
+        $scope.subFrom.selectProduct = selectProduct;
+        card.next(pageflag);
     }
 })
