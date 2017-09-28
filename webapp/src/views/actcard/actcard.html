@@ -26,9 +26,8 @@
             </div>
             <label>{{d.text}}</label>
         </div>
-
     </div>
-    <div class="col-md-12">
+    <div class="col-md-12 cardstart">
         <div class="col-md-6">
             <div class="dashboard-stat blue-madison">
                 <a class="more" href="" ng-click="card.next(pageflag)">
@@ -69,23 +68,29 @@
 </div>
 <!-- 选择卡片 -->
 <div ng-if="pageflag == 1 && carddetails == false">
-    <h1>选择卡片</h1>
-    <div class="row" style="width: 100%">
-        <div class="col-md-4" ng-repeat="d in cardtype track by $index" ng-click="card.details(d)">
-            <div class="imgdiv" style="width:100%;">
-                <img src="../assets/global/img/{{d.pictureName}}.png" style="width:100%; height:100%"/>
-            </div>
-            <div style="float: left;width: 100%" class="row">
-                <div class="col-md-4">
-                    {{d.cardName}}
+    <div class="page-header">
+        <h1  class="cardtitle">
+            请选择您需要的卡片种类
+        </h1>
+    </div>
+    <div class="col-md-12" style="margin-bottom: 5%;">
+        <div class="col-md-4 cardbox"  ng-repeat="d in cardtype track by $index" ng-click="card.details(d)" >
+            <div class="cardboxchild">
+                <div class="imgdiv" style="width:100%; text-align: center" >
+                    <img src="../assets/global/img/{{d.pictureName}}.png" style="width:50%; height:100%"/>
                 </div>
-                <div class="col-md-4" ng-repeat="c in d.product track by $index">
-                    {{c}}
+                <div class="carboxtext clearfix" >
+                    <p class="col-md-12">
+                        {{d.cardName}}
+                    </p>
+                    <p class="col-md-12" ng-repeat="c in d.product track by $index">
+                        {{c.des}}
+                    </p>
                 </div>
             </div>
         </div>
     </div>
-    <div class="backbtn">
+    <div class="backbtn col-md-12">
         <a href="javascript:;" class="btn2" ng-click="card.back()">
             <i class="fa fa-arrow-circle-left fa-3x"></i>
             <div>
@@ -94,134 +99,185 @@
         </a>
     </div>
 </div>
+<!-- 卡片内容 -->
 <div ng-if="pageflag == 1 && carddetails == true">
-    <div class="row">
+    <div class="row cardinfo" >
         <div class="col-md-6">
-            <div style="text-align:center">
+            <div class="cardinfoimg">
                 <img src="../assets/global/img/{{subFrom.carditem.pictureName}}.png" class="smimgdiv"/>
                 <h1 class="float-left">{{subFrom.carditem.cardName}}</h1>
             </div>
-            <div class="float-left">
-                <h1>特点1</h1>
+            <div class="float-left  carddesign">
+                <p>
+                    <em>特点1:</em>
+                </p>
             </div>
-            <div class="float-left row">
-                <div class="col-md-4 col-md-offset-2">
-                    <button type="button" class="btn default btn-block" ng-click="card.cancel()">取消</button>
-                </div>
-                <div class="col-md-4">
-                    <button type="button" ng-click="card.next(pageflag)" class="btn blue btn-block">开卡</button>
-                </div>
+            <div class="float-left carddesign">
+                <p>
+                    <em>特点2:</em>
+                </p>
+            </div>
+            <div class="float-left carddesign">
+                <p>
+                    <em>特点3:</em>
+                </p>
+            </div>
+            <div class="float-left carddesign">
+                <p>
+                    <em>特点4:</em>
+                </p>
             </div>
         </div>
-        <div class="col-md-6">
-            给上具体描述
+        <div class="col-md-6"  style="padding:0 10%;">
+            <p>可图文并貌的描述 该卡片的详细信息....</p>
+            <p>（1）策略模式提供了管理相关的算法族的办法。策略类的等级结构定义了一个算法或行为族。恰当使用继承可以把公共的代码移到父类里面，从而避免代码重复。</p>
+            <p>（2）使用策略模式可以避免使用多重条件(if-else)语句。多重条件语句不易维护，它把采取哪一种算法或采取哪一种行为的逻辑与算法或行为的逻辑混合在一起，统统列在一个多重条件语句里面，比使用继承的办法还要原始和落后</p>
+            <p>（1）客户端必须知道所有的策略类，并自行决定使用哪一个策略类。这就意味着客户端必须理解这些算法的区别，以便适时选择恰当的算法类。换言之，策略模式只适用于客户端知道算法或行为的情况。</p>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-2 col-md-offset-2">
+                <div class=" btn-set">
+                    <button type="button" name="back"  class="btn btn-set btnclear" ng-click="card.cancel()"> 取消
+                    </button>
+                    <button type="button" name="back" class="btn btn-primary" ng-click="card.next(pageflag)"> 开卡
+                    </button>
+
+                </div>
+            </div>
         </div>
     </div>
 </div>
 <!-- 身份审核 -->
 <div ng-if="pageflag == 2 && iddetails == false">
     <div class="row">
-        <div class="col-md-offset-4 col-md-4 tishidiv" style="background-color: #2a85a0">
-
+        <div class="col-md-12">
+            <div class="tishidivst" style="border: 1px solid #0b94ea">
+                <p>请将身份证放到指定区域</p>
+                <div class="tishidiv" style="background:#ccc "></div>
+                <p>身份证读取中......  30 S</p>
+            </div>
         </div>
     </div>
-    <div>
-        <button ng-click="card.idcardsuccess()">成功</button>
-        <button ng-click="card.idcarderror()">失败</button>
+    <div class="col-md-12">
+        <div class="col-md-2  col-md-offset-4">
+            <button type="button" name="back" class="btn btn-primary"  ng-click="card.idcardsuccess()"> 模拟审核通过
+            </button>
+        </div>
+
+        <div class="col-md-2 ">
+            <button type="button" name="back" class="btn btn-set" ng-click="card.idcarderror()"> 模拟审核失败
+            </button>
+        </div>
+
+
     </div>
-    <div class="backbtn">
-        <a href="javascript:;" class="btn2" ng-click="card.back()">
-            <i class="fa fa-arrow-circle-left fa-3x"></i>
-            <div>
-                上一步
-            </div>
-        </a>
+    <div class="col-md-12">
+        <div class="backbtn">
+            <a href="javascript:;" class="btn2" ng-click="card.back()">
+                <i class="fa fa-arrow-circle-left fa-3x"></i>
+                <div>
+                    上一步
+                </div>
+            </a>
+        </div>
     </div>
 </div>
-<div ng-if="pageflag == 2 && iddetails == true">
-    <div class="col-md-offset-3 col-md-6">
-        <h1>身份审核通过</h1>
-        <div class="col-md-6" style="background-color: #2a85a0;height: 100px">
-
+<!--身份审核通过-->
+<div ng-if="pageflag == 2 && iddetails == true" class="operinfo">
+    <div class="col-md-offset-2 col-md-8">
+        <h1  class="opersuss"><em class="glyphicon glyphicon-ok-circle"></em>身份审核通过!</h1>
+        <div class="col-md-12">
+            <div class="col-md-5   operytrue"></div>
+            <div class="col-md-5 col-md-offset-2 operytrue"></div>
         </div>
-        <div class="col-md-6" style="background-color: #2a85a0;height: 100px">
-
+        <div class="col-md-12  operinfo">
+            <h1 >姓名:王二小</h1>
         </div>
-        <h1>姓名:XXX</h1>
-        <h1>发证机关:XXX</h1>
-        <h1>有效期:XXX</h1>
+        <div class="col-md-12 operinfo">
+            <h1>发证机关:北京市公安局大兴分局</h1>
+        </div>
+        <div class="col-md-12 operinfo">
+            <h1>有效期:2012.12.29 － 2032.12.29</h1>
+        </div>
         <div class="col-md-offset-5 col-md-2">
             <button type="button" ng-click="card.next(pageflag)" class="btn blue btn-block">下一步</button>
         </div>
     </div>
 </div>
 <!-- 信息录入 -->
-<div ng-if="pageflag == 3">
+<div ng-if="pageflag == 3" class="infoipport">
     <form class="form-horizontal">
         <div class="form-bodyform-body">
             <div class="form-group">
                 <label class="control-label col-md-4">姓名:</label>
-                <div class="col-md-4">
+                <div class="col-md-5">
+
                     <input type="text" class="form-control" ng-model="subFrom.personDetails.personName"/>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-md-4">性别:</label>
-                <div class="col-md-4">
+
+                <div class="col-md-5">
+
                     <input type="text" class="form-control" ng-model="subFrom.personDetails.personGender"/>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-md-4">电话:</label>
-                <div class="col-md-4">
+
+                <div class="col-md-5">
+
                     <input type="text" class="form-control" ng-model="subFrom.personDetails.phone"/>
                 </div>
             </div>
         </div>
-        <div class="form-actions">
-            <div class="row">
-                <div class="col-md-offset-4 col-md-4">
-                    <button type="button" ng-click="card.next(pageflag)" class="btn blue btn-block">下一步</button>
-                </div>
+        <div class="form-actionss">
+            <div class="col-md-offset-6 col-md-1">
+                <button type="button" ng-click="card.next(pageflag)" class="btn blue btn-block">下一步</button>
             </div>
+
         </div>
     </form>
-    <div class="backbtn">
-        <a href="javascript:;" class="btn2" ng-click="card.back()">
-            <i class="fa fa-arrow-circle-left fa-3x"></i>
-            <div>
-                上一步
-            </div>
-        </a>
-    </div>
+   <div class="col-md-12">
+       <div class="backbtn">
+           <a href="javascript:;" class="btn2" ng-click="card.back()">
+               <i class="fa fa-arrow-circle-left fa-3x"></i>
+               <div>
+                   上一步
+               </div>
+           </a>
+       </div>
+   </div>
 </div>
 <!-- 产品签约 -->
-<div ng-show="pageflag == 4">
-    <div class="row">
-        <div class="col-md-3" style="height: 200px; text-align: center" ng-repeat="d in productList track by $index">
-            <div style="background-color: #89C4F4">
-                <h1 style="line-height: 180px">{{d.productName}}</h1>
-                <div class="form-group" style="background-color: white">
-                    <label>请按需勾选</label>
+<div ng-show="pageflag == 4"  class="product">
+    <div class="col-md-12">
+        <div  class="col-md-3 col-xs-12  col-sm-12  productbox"  ng-repeat="d in productList track by $index">
+            <div class="col-md-12">
+                <div class="productinnet">
+                    <h1 class="producttext">{{d.productName}}</h1>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group productcheck" >
+                    <!--<label>请按需勾选</label>-->
                     <div class="checkbox-list">
-                        <label>
-                            <div class="checker"><span><input type="checkbox" ng-model="d.ischecked"> 开通</span></div>
-                        </label>
                         <label ng-repeat="c in d.option">
-                            <div class="checker"><span><input type="checkbox"
-                                                              ng-model="c.ischecked"> {{c.optionName}}</span></div>
+                            <div class="checker"><span><input type="checkbox" ng-model="c.ischecked"> {{c.optionName}}</span></div>
                         </label>
                     </div>
                 </div>
             </div>
+
+        </div>
+        <div class="col-md-12 probutton">
+            <div class="col-md-offset-5 col-md-2">
+                <button type="button" ng-click="card.sign(pageflag)" class="btn blue btn-block">确认签约</button>
+            </div>
         </div>
     </div>
-    <div class="row" style="margin-top:100px;">
-        <div class="col-md-offset-4 col-md-4">
-            <button type="button" ng-click="card.sign(pageflag)" class="btn blue btn-block">确认签约</button>
-        </div>
-    </div>
-    <div class="backbtn">
+    <div class="backbtn col-md-12">
         <a href="javascript:;" class="btn2" ng-click="card.back()">
             <i class="fa fa-arrow-circle-left fa-3x"></i>
             <div>
@@ -231,128 +287,133 @@
     </div>
 </div>
 <!-- 信息确认 -->
-<div ng-show="pageflag == 5">
-    <div class="row">
-        <div class="col-md-6">
-            <div>
-                <h1>尊敬的用户:{{subFrom.idcard.name}}</h1>
-                <h1>您即将开立我行{{subFrom.carditem.cardName}}</h1>
-                <h2>包括开通以下业务:</h2>
-                <h2 ng-repeat="d in subFrom.selectProduct">&nbsp;&nbsp;&nbsp;&nbsp;{{d.name}}</h2>
-            </div>
+<div ng-show="pageflag == 5"class="infocheck">
+        <div class="col-md-6 infoqueh">
+            <h1>尊敬的用户:{{subFrom.idcard.name}}</h1>
+            <h1>您即将开立我行{{subFrom.carditem.cardName}}</h1>
+            <h1>包括开通以下业务:</h1>
+            <p ng-repeat="d in subFrom.selectProduct"  class="infodict">{{d.name}}</p>
             <div class="float-left">
-                <h2 ng-repeat="d in subFrom.selectProduct">其中{{d.name}}开通以下业务:
-                    <p ng-repeat="c in d.option">{{c.optionName}}</p>
-                </h2>
-            </div>
+                <h1>其中{{d.name}}其中转账限额:</h1>
+                    <p class="infodict">单笔 50000，日累积转账限额 500000</p>
+                  <!--<h2 ng-repeat="d in subFrom.selectProduct">其中{{d.name}}开通以下业务:
+                      <p ng-repeat="c in d.option">{{c.optionName}}</p>
+                  </h2>-->
+              </div>
         </div>
-        <div class="col-md-6">
-            <h1>客户签名</h1>
-            <div class="float-left row">
-                <div class="col-md-4 col-md-offset-4">
+        <div class="col-md-6 infoqm">
+                <div class="infodiv">
+                    <p>请进行客户签名</p>
+                </div>
+            <div class="float-left">
+                <div class="col-md-3 col-md-offset-4  inofnexxt">
                     <button type="button" class="btn blue btn-block" ng-click="card.next(pageflag)">确认信息</button>
                 </div>
             </div>
         </div>
     </div>
-    <div class="backbtn">
-        <a href="javascript:;" class="btn2" ng-click="card.back()">
-            <i class="fa fa-arrow-circle-left fa-3x"></i>
-            <div>
-                上一步
-            </div>
-        </a>
-    </div>
 </div>
 <!-- 设置密码 -->
 <div ng-show="pageflag == 6">
-    <h1>
-        请输入账户密码，该密码将用于账务查询、转账、支付等功能！
-    </h1>
+    <div class="page-header">
+        <h1  class="cardtitle">
+            请输入账户密码，该密码将用于账务查询、转账、支付等功能！
+        </h1>
+    </div>
     <form class="form-horizontal">
-        <div class="form-bodyform-body">
-            <div class="form-group">
-                <label class="control-label col-md-4">账户密码:</label>
-                <div class="col-md-4">
-                    <input type="password" class="form-control" ng-model="subFrom.passWord"/>
+        <div class="form-bodyform-body clearfix">
+            <div class="col-md-12 password">
+                <div class="col-md-6">
+                    <div class="form-group clearfix">
+                        <label class="control-label col-md-4">账户密码:</label>
+                        <div class="col-md-6">
+                            <input type="password" class="form-control" ng-model="subFrom.passWord"/>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label class="control-label col-md-4">确认密码:</label>
-                <div class="col-md-4">
-                    <input type="password" class="form-control" ng-model="repassWord"/>
-                    <span style="color:red" ng-show="subFrom.passWord!=repassWord">两次密码不一致</span>
-                </div>
+            <div class="col-md-12 password" style="margin-bottom: 35%">
+               <div class="col-md-6">
+                   <div class="form-group clearfix">
+                       <label class="control-label col-md-4">确认密码:</label>
+                       <div class="col-md-6">
+                           <input type="password" class="form-control" ng-model="repassWord"/>
+                           <span style="color:red" ng-show="subFrom.passWord!=repassWord">两次密码不一致</span>
+                       </div>
+                   </div>
+               </div>
             </div>
-        </div>
-        <div class="form-actions">
-            <div class="row">
-                <div class="col-md-offset-4 col-md-4">
+            <div class="col-md-12">
+                <div class="col-md-offset-6 col-md-1">
                     <button type="button" ng-click="card.next(pageflag)" class="btn blue btn-block">确认密码</button>
                 </div>
             </div>
+
         </div>
+
+
     </form>
 </div>
 <!-- 开户成功 -->
 <div ng-show="pageflag == 7">
-
-
-    <h1>尊敬的客户，您已成功开户！</h1>
-    <h1>请妥善保管银行卡以及账户密码，谨防网络欺诈！</h1>
-
-
-    <div style="text-align:center">
-        <a href="#/dashboard.html" ng-click="" class="btn2">
-            <i class="fa fa-arrow-circle-right fa-3x"></i>
-            <div>
-                结束业务
-            </div>
-        </a>
+    <div class="col-md-12 opencard">
+        <h1>尊敬的客户，您已成功开户！</h1>
+        <h1>请妥善保管银行卡以及账户密码，谨防网络欺诈！</h1>
     </div>
-    <h1>你可以继续办理其他业务：</h1>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="col-md-4">
-                <a href="#/dashboard.html" ng-click="" class="btn2">
-                    <i class="fa fa-arrow-circle-right fa-3x"></i>
-                    <div>
-                        结束业务
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4">
-                <a href="#/dashboard.html" ng-click="" class="btn2">
-                    <i class="fa fa-arrow-circle-right fa-3x"></i>
-                    <div>
-                        结束业务
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4">
-                <a href="#/dashboard.html" ng-click="" class="btn2">
-                    <i class="fa fa-arrow-circle-right fa-3x"></i>
-                    <div>
-                        结束业务
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="col-md-offset-6">
-                <a href="javascript:;" class="icon-btn">
-                    <i class="fa fa-qrcode"></i>
-                    <div>
-                        关注微信
-                    </div>
-                </a>
-                <a href="javascript:;" class="icon-btn">
-                    <i class="fa fa-qrcode"></i>
-                    <div>
-                        关注我行
-                    </div>
-                </a>
-            </div>
+    <div class="col-md-12 opencard">
+        <div style="text-align:center">
+            <a href="#/dashboard.html" ng-click="" class="btn2">
+                <i class="fa fa-arrow-circle-right fa-3x"></i>
+                <div>结束业务</div>
+            </a>
         </div>
     </div>
+
+    <div class="col-md-12 opencard">
+        <h1>你可以继续办理其他业务：</h1>
+    </div>
+   <div class="col-md-12 opencard">
+           <div class="col-md-6">
+               <div class="col-md-4">
+                   <a href="#/dashboard.html" ng-click="" class="btn2">
+                       <i class="fa fa-arrow-circle-right fa-3x"></i>
+                       <div>
+                           结束业务
+                       </div>
+                   </a>
+               </div>
+               <div class="col-md-4">
+                   <a href="#/dashboard.html" ng-click="" class="btn2">
+                       <i class="fa fa-arrow-circle-right fa-3x"></i>
+                       <div>
+                           结束业务
+                       </div>
+                   </a>
+               </div>
+               <div class="col-md-4">
+                   <a href="#/dashboard.html" ng-click="" class="btn2  ">
+                       <i class="fa fa-arrow-circle-right fa-3x"></i>
+                       <div>
+                           结束业务
+                       </div>
+                   </a>
+               </div>
+           </div>
+           <div class="col-md-6">
+               <div class="col-md-offset-6">
+                   <a href="javascript:;" class="icon-btn">
+                       <i class="fa fa-qrcode"></i>
+                       <div>
+                           关注微信
+                       </div>
+                   </a>
+                   <a href="javascript:;" class="icon-btn">
+                       <i class="fa fa-qrcode"></i>
+                       <div>
+                           关注我行
+                       </div>
+                   </a>
+               </div>
+       </div>
+   </div>
 </div>

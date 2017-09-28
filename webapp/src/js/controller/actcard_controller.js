@@ -86,8 +86,17 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
     bar.push(obar7);
 
     /**--------------------------------模拟卡片类型-------------------------------*/
-    var cardtype = [{"cardName":"白金卡","pictureName":"platinum","product":[1,2,3,4,5]},
-        {"cardName":"金卡","pictureName":"gold","product":[1,2,3,4,5]}];
+    var cardtype = [{"cardName":"白金卡","pictureName":"platinum","product":[{"des":"上善卡慈善主题 普通借记卡 投资理财 存取款 代发工资  普通借记卡 投资理财 存取款 代"}]},
+        {"cardName":"金卡","pictureName":"gold","product":[{"des":"上善卡慈善主题 普通借记卡 投资理财 存取款 代发工资  普通借记卡 投资理财 存取款 代"}]},
+        {"cardName":"黑色卡","pictureName":"gold","product":[{"des":"上善卡慈善主题 普通借记卡 投资理财 存取款 代发工资   普通借记卡 投资理财 存取款 代"}]},
+        {"cardName":"尊享卡","pictureName":"gold","product":[{"des":"上善卡慈善主题 普通借记卡 投资理财 存取款 代发工资  普通借记卡 投资理财 存取款 代"}]},
+        {"cardName":"青春卡","pictureName":"gold","product":[{"des":"上善卡慈善主题 普通借记卡 投资理财 存取款 代发工资   普通借记卡 投资理财 存取款 代"}]},
+        {"cardName":"量贩卡","pictureName":"gold","product":[{"des":"上善卡慈善主题 普通借记卡 投资理财 存取款 代发工资   普通借记卡 投资理财 存取款 代"}]}
+
+
+
+
+        ];
     $scope.cardtype = cardtype;
     //卡片详情页签控制
     var carddetails = false;
@@ -112,7 +121,7 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
         $scope.iddetails = true;
         var idcard = {};
         idcard.id = "123123123";
-        idcard.name = "XXX";
+        idcard.name = "王小二";
         idcard.date = "0000-00-00";
         $scope.subFrom.idcard = idcard;
     }
@@ -127,16 +136,16 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
 
     /**----------------------------------模拟产品签约--------------------------------*/
     var productList = [
-        {"productName":"手机银行","option":[{"optionName":"可指纹登录","optionValue":"01"},{"optionName":"支付限额","optionValue":"02"}]},
-        {"productName":"网上银行","option":[{"optionName":"需要动态口令","optionValue":"01"},{"optionName":"转账限额","optionValue":"02"}]},
-        {"productName":"短信通","option":[]},
-        {"productName":"电话银行","option":[]},
+        {"productName":"手机银行","option":[{"optionName":"开通","optionValue":"00"},{"optionName":"可指纹登录","optionValue":"01"},{"optionName":"支付限额","optionValue":"02"}]},
+        {"productName":"网上银行","option":[{"optionName":"开通","optionValue":"00"},{"optionName":"需要动态口令","optionValue":"01"},{"optionName":"转账限额","optionValue":"02"}]},
+        {"productName":"短信通","option":[{"optionName":"开通","optionValue":"00"},{"optionName":"需要动态口令","optionValue":"01"},{"optionName":"转账限额","optionValue":"02"}]},
+        {"productName":"电话银行","option":[{"optionName":"开通","optionValue":"00"},{"optionName":"需要动态口令","optionValue":"01"},{"optionName":"转账限额","optionValue":"02"}]},
+        {"productName":"电话银行","option":[{"optionName":"开通","optionValue":"00"},{"optionName":"需要动态口令","optionValue":"01"},{"optionName":"转账限额","optionValue":"02"}]},
                         ];
     $scope.productList = productList;
     
     //确认签约
     card.sign = function (pageflag) {
-        console.log($scope.productList)
         //组装数据展示
         var selectProduct = [];
         //挑选用户选择项
@@ -152,9 +161,18 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
                     }
                 }
                 selectProduct.push(product);
+                console.log(selectProduct)
             }
         }
-        $scope.subFrom.selectProduct = selectProduct;
+        // $scope.subFrom.selectProduct = selectProduct;
+        //测试样式
+        var testselsr = [
+            {"name":"网上银行"},
+            {"name":"手机银行"},
+            {"name":"电话银行"}
+        ]
+        $scope.subFrom.selectProduct = testselsr;
         card.next(pageflag);
+
     }
 })
