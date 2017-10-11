@@ -12,7 +12,8 @@
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="../assets/plugins/font-awesome/css/font-awesome.css" />
     <link rel="stylesheet" href="../assets/plugins/bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/index.css"/>
+    <link rel="stylesheet" href="css/dashboar.css"/>
+    <link rel="stylesheet" href="../assets/global/plugins/swiper/swiper.min.css">
     <link rel="stylesheet" href="http://g.alicdn.com/sj/qnui/1.5.1/css/sui-append.min.css"/>
     <link rel="stylesheet" href="http://g.alicdn.com/sj/qnui/1.5.1/css/sui.min.css"/>
     <link rel="stylesheet" href="http://g.alicdn.com/sj/qnui/1.5.1/js/sui.min.js"/>
@@ -27,19 +28,17 @@
    	<!--angular模块 -->
   	<script src="../assets/plugins/angularjs/angular.min.js"></script>
 </head>
-<body>
+<body  style="background: #edf9ff;">
     <!-- 写入路由改变，内容放入的区域-->
-    <div  ng-include="'tpl/header.html'"  class="page-header navbar navbar-fixed-top"></div>
-    <div  class="clearfix"></div>
+    <div  ng-include="'tpl/header.html'"></div>
     <div  class="page-container">
         <div class="page-content-wrapper">
             <div class="page-content">
-                <div ui-view class="fade-in-up" style="margin-top:12%;"></div>
+                <div ui-view class="fade-in-up"></div>
             </div>
         </div>
     </div>
-
-    <div  ng-include="'tpl/footer.html'" ng-controller="dash_controller" class="container" ></div>
+    <!--<div  ng-include="'tpl/footer.html'" ng-controller="dash_controller" class="container" ></div>-->
      <!-- 自身js-->
     <script src="js/main.js"></script>
     <!--ng路由模块-->
@@ -52,6 +51,7 @@
 
     <!-- 异步加载js模块，必须引用，因为我们控制器是分开的-->
     <script src="../assets/plugins/angularjs/ocLazyLoad.min.js"></script>
+    <script src="../assets/global/plugins/swiper/swiper.min.js"></script>
 
     <!-- 各路由页面controller-->
     <!-- 首页 -->

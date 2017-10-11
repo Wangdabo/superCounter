@@ -22,9 +22,9 @@ ul,
 code,
 pre,
 li {
-  -webkit-border-radius: 0 !important;
-  -moz-border-radius: 0 !important;
-  border-radius: 0 !important;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
 }
 
 /* except below bootstrap elements */
@@ -5007,7 +5007,7 @@ Dashboard Stats
 .dashboard-stat .details .number {
   padding-top: 25px;
   text-align: right;
-  font-size: 34px;
+  font-size: 28px;
   line-height: 36px;
   letter-spacing: -1px;
   margin-bottom: 0px;
@@ -6822,7 +6822,8 @@ Blue Madison
   filter: alpha(opacity=10);
 }
 .dashboard-stat.blue-madison .details .number {
-  color: #FFFFFF;
+  /*color: #FFFFFF;*/
+  color: #000000;
 }
 .dashboard-stat.blue-madison .details .desc {
   color: #FFFFFF;
@@ -8565,7 +8566,8 @@ Green Haze
   filter: alpha(opacity=10);
 }
 .dashboard-stat.green-haze .details .number {
-  color: #FFFFFF;
+  /*color: #FFFFFF;*/
+  color: #000000;
 }
 .dashboard-stat.green-haze .details .desc {
   color: #FFFFFF;
@@ -10891,7 +10893,8 @@ Red Intense
   filter: alpha(opacity=10);
 }
 .dashboard-stat.red-intense .details .number {
-  color: #FFFFFF;
+  /*color: #FFFFFF;*/
+  color: #000000;
 }
 .dashboard-stat.red-intense .details .desc {
   color: #FFFFFF;

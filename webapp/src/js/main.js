@@ -45,7 +45,18 @@ myApp.config(['$stateProvider','$httpProvider', '$urlRouterProvider', function($
             url:"/actcard.html",
             templateUrl:"views/actcard/actcard.html",
             data:{pageTitle:'开卡流程'},
-            controller:"actcard_controller"
+            controller:"actcard_controller",
+            resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'MetronicApp',
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                        files: [
+                            './css/index.css',
+                        ]
+                    });
+                }]
+            }
         })
        
 

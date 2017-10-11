@@ -57,13 +57,13 @@
     padding-top: 10px;
 }
 
-.cardbox{
+.cardboxes{
     max-height:300px;
     margin-top:40px;
     padding: 20px;
 }
 
-.cardbox:nth-child(-n+3){
+.cardboxes:nth-child(-n+3){
     margin-top:5px;
 }
 

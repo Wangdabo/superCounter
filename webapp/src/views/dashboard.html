@@ -1,221 +1,92 @@
-<!--&lt;!&ndash; BEGIN PAGE BREADCRUMB &ndash;&gt;-->
-<!--<ul class="page-breadcrumb breadcrumb">-->
-    <!--<li>-->
-        <!--<a href="#">首页</a>-->
-    <!--</li>-->
-<!--</ul>-->
-<!--&lt;!&ndash; END PAGE BREADCRUMB &ndash;&gt;-->
-<!-- BEGIN MAIN CONTENT -->
-<div ng-controller="dash_controller">
-    <div class="container" style="width: 100%;">
-        <div class="row" >
-            <div class="col-md-5 " >
-                <div class="col-md-offset-1 col-md-10 divs">
-                    <div class="dashboard-stat red-intense">
-                        <div class="visual">
-                            <i class="fa fa-bar-chart-o"></i>
-                        </div>
-                        <div class="details">
-                            <div class="number">
-                                广告栏1
-                            </div>
-                            <div class="desc">
-                                .....
-                            </div>
-                        </div>
-                        <a class="more" href="#">
-                            进入 <i class="m-icon-swapright m-icon-white"></i>
-                        </a>
-                    </div>
+<div class="dashboard" ng-controller="dash_controller">
+    <div class="rotation">
+        <!--<img src="./images/banner.png" alt="">-->
+        <div id="myCarousel" class="carousel slide">
+            <!-- 轮播（Carousel）项目 -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img src="./images/banner.png" alt="First slide">
+
+                </div>
+                <div class="item">
+                    <img src="./images/banner.png" alt="Second slide">
+
+                </div>
+                <div class="item">
+                    <img src="./images/banner.png" alt="Third slide">
                 </div>
             </div>
-            <div class="col-md-4 " style="">
-                <div class="col-md-12 divs">
-                        <div class="dashboard-stat blue-madison">
-                            <div class="visual">
-                                <i class="fa fa-credit-card-alt"></i>
-                            </div>
-                            <div class="details">
-                                <div class="number">
-                                    我要开卡
-                                </div>
-                                <div class="desc">
-                                    .....
-                                </div>
-                            </div>
-                            <a class="more" href="#/actcard.html">
-                                进入 <i class="m-icon-swapright m-icon-white"></i>
-                            </a>
-                        </div>
-                </div>
-            </div>
-            <div class="col-md-3 " style="">
-                <div class="col-md-offset-1 col-md-10 divs">
-                    <div class="dashboard-stat green-haze">
-                        <div class="visual">
-                            <i class="fa fa-credit-card-alt"></i>
-                        </div>
-                        <div class="details">
-                            <div class="number">
-                                我要签约
-                            </div>
-                            <div class="desc">
-                                .....
-                            </div>
-                        </div>
-                        <a class="more" href="#">
-                            进入 <i class="m-icon-swapright m-icon-white"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
+            <!-- 轮播（Carousel）导航 -->
+            <!-- <a class="carousel-control left" href="#myCarousel"
+                data-slide="prev">&lsaquo;</a>
+             <a class="carousel-control right" href="#myCarousel"
+                data-slide="next">&rsaquo;</a>-->
+            <!-- 轮播（Carousel）指标 -->
+            <ol class="carousel-indicators" >
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
         </div>
+
+        <script>
+            $(document).ready(function(){
+                $('#myCarousel').carousel({interval:10000});//每隔5秒自动轮播
+            });
+        </script>
     </div>
-    <div class="container" style="margin: 5% 0;width: 100%">
-        <div class="row" >
-            <div class="col-md-5 " >
-                <div class="col-md-offset-1 col-md-10 divs">
-                    <div class="dashboard-stat red-intense">
-                        <div class="visual">
-                            <i class="fa fa-bar-chart-o"></i>
-                        </div>
-                        <div class="details">
-                            <div class="number">
-                                广告栏2
-                            </div>
-                            <div class="desc">
-                                .....
+    <!--card-->
+    <div class="card">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <!-- 第一屏内容-->
+                <div class="swiper-slide card-overfloo">
+                    <div class="card-top clearfix" >
+                        <!--利用ng-show来控制显示方式，第一屏只显示索引小于3和4的  第二批显示索引大于3和4的-->
+                        <div class="card-3" ng-repeat="d in card3repeat track by $index" ng-show="$index<3" ng-click="cardtop($index)"   ng-class="{fabricImg1:$index==fabricIsSelected}">
+                            <div class="cardbox">
+                                <img src="{{d.src}}"  alt="">
+                                <p>{{d.text}}</p>
                             </div>
                         </div>
-                        <a class="more" href="#">
-                            进入 <i class="m-icon-swapright m-icon-white"></i>
-                        </a>
+                    </div>
+                    <div class="card-bottom clearfix">
+                        <div class="card-2"  ng-repeat="d in cardbuttonrepeat track by $index " ng-show="$index<4"  ng-click="cardbutton($index)"  ng-class="{fabricImg2:$index==fabricIs2Selected}">
+                            <div class="cardbox">
+                                <img src="{{d.src}}"  alt="">
+                                <p>{{d.text}}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4 " style="">
-                <div class="col-md-12 divs">
-                    <div class="dashboard-stat blue-madison">
-                        <div class="visual">
-                            <i class="fa fa-cny"></i>
-                        </div>
-                        <div class="details">
-                            <div class="number">
-                                个人理财
-                            </div>
-                            <div class="desc">
-                                .....
+                <!--第二屏内容,全大图标-->
+                <div class="swiper-slide card-overfloo">
+                    <div class="card-top clearfix">
+                        <div class="card-3" ng-repeat="d in card3repeat" ng-show="$index>2" ng-click="cardtop($index)"   ng-class="{fabricImg1:$index==fabricIsSelected}">
+                            <div class="cardbox">
+                                <img src="{{d.src}}"  alt="">
+                                <p>{{d.text}}</p>
                             </div>
                         </div>
-                        <a class="more" href="#">
-                            进入 <i class="m-icon-swapright m-icon-white"></i>
-                        </a>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-3 " style="">
-                <div class="col-md-offset-1 col-md-10 divs">
-                    <div class="dashboard-stat green-haze">
-                        <div class="visual">
-                            <i class="fa fa-credit-card-alt"></i>
-                        </div>
-                        <div class="details">
-                            <div class="number">
-                                账户查询
-                            </div>
-                            <div class="desc">
-                                .....
+                <!--第三屏内容,全小图标-->
+                <div class="swiper-slide card-overfloo">
+                    <div class="card-bottom clearfix">
+                        <div class="card-2"  ng-repeat="d in cardbuttonrepeat track by $index " ng-show="$index>4"  ng-click="cardbutton($index)"  ng-class="{fabricImg2:$index==fabricIs2Selected}">
+                            <div class="cardbox">
+                                <img src="{{d.src}}"  alt="">
+                                <p>{{d.text}}</p>
                             </div>
                         </div>
-                        <a class="more" href="#">
-                            进入 <i class="m-icon-swapright m-icon-white"></i>
-                        </a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="container" style="width: 100%">
-        <div class="row" >
-            <div class="col-md-5" >
-                <div class="col-md-offset-1 col-md-10 divs">
-                    <div class="dashboard-stat red-intense">
-                        <div class="visual">
-                            <i class="fa fa-bar-chart-o"></i>
-                        </div>
-                        <div class="details">
-                            <div class="number">
-                                广告栏3
-                            </div>
-                            <div class="desc">
-                                .....
-                            </div>
-                        </div>
-                        <a class="more" href="#">
-                            进入 <i class="m-icon-swapright m-icon-white"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 " style="">
-                <div class="col-md-5 divs">
-                    <div class="dashboard-stat blue-madison">
-                        <div class="visual">
-                            <i class="fa fa-wrench"></i>
-                        </div>
-                        <div class="details">
-                            <div class="number">
-                                功能
-                            </div>
-                            <div class="desc">
-                                .....
-                            </div>
-                        </div>
-                        <a class="more" href="#">
-                            进入 <i class="m-icon-swapright m-icon-white"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-5 divs">
-                    <div class="dashboard-stat blue-madison">
-                        <div class="visual">
-                            <i class="fa fa-mobile"></i>
-                        </div>
-                        <div class="details">
-                            <div class="number">
-                                修改号码
-                            </div>
-                            <div class="desc">
-                                .....
-                            </div>
-                        </div>
-                        <a class="more" href="#">
-                            进入 <i class="m-icon-swapright m-icon-white"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 " style="">
-                <div class="col-md-offset-1 col-md-10 divs" >
-                    <div class="dashboard-stat green-haze">
-                        <div class="visual">
-                            <i class="fa fa-file-text"></i>
-                        </div>
-                        <div class="details">
-                            <div class="number">
-                                打印流水
-                            </div>
-                            <div class="desc">
-                                .....
-                            </div>
-                        </div>
-                        <a class="more" href="#">
-                            进入 <i class="m-icon-swapright m-icon-white"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!--初始化swiper-->
+        <script>
+            var swiper = new Swiper('.swiper-container');
+        </script>
     </div>
 </div>
 <!-- END MAIN CONTENT -->

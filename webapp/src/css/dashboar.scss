@@ -1,0 +1,140 @@
+@charset "UTF-8";
+$headtop:63px;
+$relative:relative;
+@mixin absolute($top,$left){
+  position: absolute;
+  top:$top;
+  left:$left;
+}
+
+@mixin margintop($top){
+  margin-top:$top;
+}
+
+/*头部样式*/
+.header{
+  margin-top:$headtop;
+  position: $relative;
+  height: 84px;
+  margin-bottom: 37px;
+  .log{
+    @include  absolute(5px,250px)
+  }
+  .active{
+    height: 80px;
+    width: 700px;
+    @include  absolute(0px,580px);
+    .box{
+      padding-right: 87px;
+      height: 80px;
+      line-height:80px;
+      @include  absolute(0px,125px);
+      li{
+        width: 56px;
+        float: left;
+        margin-right:41px;
+        text-align: center;
+        a{
+          text-decoration:none;
+          img{
+            display: inline-block;
+            margin:16px 0 10px 0;
+          }
+          p{
+            color:#fff;
+            font-size:18px;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* 首页样式 */
+.dashboard{
+  width: 100%;
+  padding: 0  87px;
+  /* 轮播样式 */
+  .rotation{
+    .carousel-indicators{
+      //top:353px;
+      top:325px;
+      li{
+        border:1px solid #293c8f;
+      }
+      .active{
+        background: #293c8f;
+      }
+    }
+
+  }
+  /*卡片样式*/
+  .card{
+    @include  margintop(30px);
+    overflow: hidden;
+    width: 100%;
+    .card-overfloo{
+      .card-top{
+        .card-3{
+          //width: 360px;
+          width: 348px;
+          height: 188px;
+          float: left;
+          margin-right:15px;
+          background: #fff;
+          .cardbox{
+            margin:0 auto;
+            text-align: center;
+            img{
+              @include  margintop(52px);
+              margin-bottom:20px;
+            }
+            p{
+              font-size: 26px;
+              color:#293c8f;
+            }
+          }
+        }
+        .card-3:nth-last-child(-n+3){
+          margin-top:15px;
+        }
+        .fabricImg1{
+          background: url("../images/bg.png") center center no-repeat;
+        }
+      }
+      .card-bottom{
+        @include  margintop(15px);
+        .card-2{
+          //width: 266px;
+          width: 259px;
+          height: 190px;
+          float: left;
+          background: #fff;
+          margin-right:15px;
+          .cardbox{
+            margin:0 auto;
+            text-align: center;
+            img{
+              @include  margintop(52px);
+              margin-bottom:20px;
+            }
+            p{
+              font-size: 26px;
+              color:#293c8f;
+            }
+          }
+        }
+        .card-2:nth-last-child(-n+4){
+          margin-top:15px;
+        }
+        .fabricImg2{
+          background: url("../images/fbj.png") center center no-repeat;
+        }
+      }
+    }
+
+  }
+}
+
+
+

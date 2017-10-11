@@ -1,0 +1,96 @@
+@charset "UTF-8";
+/*头部样式*/
+.header {
+  margin-top: 63px;
+  position: relative;
+  height: 84px;
+  margin-bottom: 37px; }
+  .header .log {
+    position: absolute;
+    top: 5px;
+    left: 250px; }
+  .header .active {
+    height: 80px;
+    width: 700px;
+    position: absolute;
+    top: 0px;
+    left: 580px; }
+    .header .active .box {
+      padding-right: 87px;
+      height: 80px;
+      line-height: 80px;
+      position: absolute;
+      top: 0px;
+      left: 125px; }
+      .header .active .box li {
+        width: 56px;
+        float: left;
+        margin-right: 41px;
+        text-align: center; }
+        .header .active .box li a {
+          text-decoration: none; }
+          .header .active .box li a img {
+            display: inline-block;
+            margin: 16px 0 10px 0; }
+          .header .active .box li a p {
+            color: #fff;
+            font-size: 18px; }
+
+/* 首页样式 */
+.dashboard {
+  width: 100%;
+  padding: 0  87px;
+  /* 轮播样式 */
+  /*卡片样式*/ }
+  .dashboard .rotation .carousel-indicators {
+    top: 325px; }
+    .dashboard .rotation .carousel-indicators li {
+      border: 1px solid #293c8f; }
+    .dashboard .rotation .carousel-indicators .active {
+      background: #293c8f; }
+  .dashboard .card {
+    margin-top: 30px;
+    overflow: hidden;
+    width: 100%; }
+    .dashboard .card .card-overfloo .card-top .card-3 {
+      width: 348px;
+      height: 188px;
+      float: left;
+      margin-right: 15px;
+      background: #fff; }
+      .dashboard .card .card-overfloo .card-top .card-3 .cardbox {
+        margin: 0 auto;
+        text-align: center; }
+        .dashboard .card .card-overfloo .card-top .card-3 .cardbox img {
+          margin-top: 52px;
+          margin-bottom: 20px; }
+        .dashboard .card .card-overfloo .card-top .card-3 .cardbox p {
+          font-size: 26px;
+          color: #293c8f; }
+    .dashboard .card .card-overfloo .card-top .card-3:nth-last-child(-n+3) {
+      margin-top: 15px; }
+    .dashboard .card .card-overfloo .card-top .fabricImg1 {
+      background: url("../images/bg.png") center center no-repeat; }
+    .dashboard .card .card-overfloo .card-bottom {
+      margin-top: 15px; }
+      .dashboard .card .card-overfloo .card-bottom .card-2 {
+        width: 259px;
+        height: 190px;
+        float: left;
+        background: #fff;
+        margin-right: 15px; }
+        .dashboard .card .card-overfloo .card-bottom .card-2 .cardbox {
+          margin: 0 auto;
+          text-align: center; }
+          .dashboard .card .card-overfloo .card-bottom .card-2 .cardbox img {
+            margin-top: 52px;
+            margin-bottom: 20px; }
+          .dashboard .card .card-overfloo .card-bottom .card-2 .cardbox p {
+            font-size: 26px;
+            color: #293c8f; }
+      .dashboard .card .card-overfloo .card-bottom .card-2:nth-last-child(-n+4) {
+        margin-top: 15px; }
+      .dashboard .card .card-overfloo .card-bottom .fabricImg2 {
+        background: url("../images/fbj.png") center center no-repeat; }
+
+/*# sourceMappingURL=dashboar.css.map */
