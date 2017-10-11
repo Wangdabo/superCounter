@@ -187,14 +187,16 @@
     <div class="col-md-offset-2 col-md-8">
         <h1  class="opersuss"><em class="glyphicon glyphicon-ok-circle"></em>身份审核通过!</h1>
         <div class="col-md-12">
-            <div class="col-md-5   operytrue"></div>
+            <div class="col-md-5   operytrue">
+                <img style="width: 330px;height: 200px" src="data:image/jpg;base64,{{idcardphoto}}"/>
+            </div>
             <div class="col-md-5 col-md-offset-2 operytrue"></div>
         </div>
         <div class="col-md-12  operinfo">
-            <h1 >姓名:王二小</h1>
+            <h1 >姓名:{{subFrom.idcard.name}}</h1>
         </div>
         <div class="col-md-12 operinfo">
-            <h1>发证机关:北京市公安局大兴分局</h1>
+            <h1>发证机关:{{subFrom.idcard.visBrno}}</h1>
         </div>
         <div class="col-md-12 operinfo">
             <h1>有效期:2012.12.29 － 2032.12.29</h1>
@@ -210,24 +212,19 @@
         <div class="form-bodyform-body">
             <div class="form-group">
                 <label class="control-label col-md-4">姓名:</label>
-                <div class="col-md-5">
-
-                    <input type="text" class="form-control" ng-model="subFrom.personDetails.personName"/>
+                <div class="col-md-5" ng-init="subFrom.personDetails.personName = subFrom.idcard.name">
+                    <input type="text" readonly class="form-control" ng-model="subFrom.personDetails.personName"/>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-md-4">性别:</label>
-
-                <div class="col-md-5">
-
-                    <input type="text" class="form-control" ng-model="subFrom.personDetails.personGender"/>
+                <div class="col-md-5" ng-init="subFrom.personDetails.personGender = '男'">
+                    <input type="text" class="form-control" readonly ng-model="subFrom.personDetails.personGender"/>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-md-4">电话:</label>
-
                 <div class="col-md-5">
-
                     <input type="text" class="form-control" ng-model="subFrom.personDetails.phone"/>
                 </div>
             </div>
