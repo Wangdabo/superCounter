@@ -1,4 +1,4 @@
-angular.module('myApp').controller('actcard_controller', function($scope, $interval,actcard_service){
+angular.module('myApp').controller('actcard_controller', function($scope, $interval,actcard_service,$rootScope,common_service){
     var card = {};
     $scope.card = card;
     //所有信息对象
@@ -16,6 +16,8 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
     //身份证图片
     var idcardphoto = "";
     $scope.idcardphoto = idcardphoto;
+    //查询所有个性化配置
+    var res = $rootScope.res.actcard_service;//页面所需调用的服务
     //下一步
     card.next = function (pageflag) {
         console.log(pageflag)
@@ -28,9 +30,9 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
             var subFrom = {};
             subFrom.tellerNo = "900001005";
             subFrom.branchId = "90091";
-            actcard_service.queryCard(subFrom).then(function (data) {
+            common_service.post(res.queryCard.url,subFrom).then(function (data) {
                 $scope.cardtype = data.bsadata;
-                console.log(data);
+                console.log(data.bsadata)
             })
         }else{
             $scope.bar[pageflag].class = "finished";
@@ -42,9 +44,8 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
                 var subFrom = {};
                 subFrom.tellerNo = "900001005";
                 subFrom.branchId = "90091";
-                actcard_service.queryProduct(subFrom).then(function (data) {
+                common_service.post(res.queryProduct.url,subFrom).then(function (data) {
                     $scope.productList = data.bsadata;
-                    console.log(data)
                 })
             }
             if(pageflag == 6) {
@@ -158,7 +159,7 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
         subFrom.phFlag = "1";
         subFrom.tellerNo = "900001005";
         subFrom.branchId = "900001";
-        actcard_service.singleCheck(subFrom).then(function (data) {
+        common_service.post(res.singleCheck.url,subFrom).then(function (data) {
             $scope.idcardphoto = data.bsadata.photo;
             var idcard = {};
             idcard.vcherType = "101";

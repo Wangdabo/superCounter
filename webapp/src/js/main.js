@@ -8,10 +8,15 @@ var myApp = angular.module("myApp", [
 
 
 //返回上一层
-myApp.run(['$rootScope', function ($rootScope) {
+myApp.run(['$rootScope','$http', function ($rootScope,$http) {
     $rootScope.goBack = function () {
         history.back();
     };
+    var res = $http.get('./json/service.json').then(function (response) {
+        console.log(response)
+        $rootScope.res = response.data;//绑定到rootscope中，在其他页面可以直接调用
+        return response;
+    })
 }]);
 
 /* Configure ocLazyLoader(refer: https://github.com/ocombe/ocLazyLoad) */
@@ -22,9 +27,10 @@ myApp.config(['$ocLazyLoadProvider', function($ocLazyLoadProvider) {
 }]);
 
 /* 底部控制器 */
-myApp.controller('FooterController', ['$scope', function($scope) {
+myApp.controller('FooterController', ['$scope','$rootScope','$http', function($scope,$rootScope,$http) {
     $scope.$on('$includeContentLoaded', function() {
         Layout.initFooter(); // init footer
+
     });
 }]);
 
@@ -58,9 +64,8 @@ myApp.config(['$stateProvider','$httpProvider', '$urlRouterProvider', function($
                 }]
             }
         })
-       
+
 
 }]);
-
 
 

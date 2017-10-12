@@ -43,7 +43,7 @@ var CKBUILDER_CONFIG = {
 		'.jshintrc',
 		'.mailmap',
 		'node_modules',
-		'package.json',
+		'service.json',
 		'README.md',
 		'tests'
 	],

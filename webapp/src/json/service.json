@@ -1,0 +1,7 @@
+{
+  "actcard_service" : {
+    "queryCard": {"url":"http://139.196.145.67:9001/padServer/OnlineCheckServer/queryCard","emo":"查询卡详情"},
+    "singleCheck": {"url":"http://139.196.145.67:9001/padServer/OnlineCheckServer/singleCheck","emo":"联网核查"},
+    "queryProduct": {"url":"http://139.196.145.67:9001/padServer/OnlineCheckServer/queryProduct","emo":"查询产品明细"}
+  }
+}
