@@ -146,37 +146,51 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
     //身份读取页签控制
     var iddetails = false;
     $scope.iddetails = iddetails;
+    var takephoto = false;
+    $scope.takephoto = takephoto;
+    var idc = {};
+    $scope.idc = idc;
     //成功
     card.idcardsuccess = function () {
-        $scope.iddetails = true;
-
         //身份核查方法,外设激活后调用
         //外设获取信息
         var subFrom = {};
         subFrom.vcherType = "101";
-        subFrom.vcherNo = "522222199007112835";
-        subFrom.name = "杨超";
+        subFrom.vcherNo = idc.vcherNo;
+        subFrom.name = idc.name;
         subFrom.phFlag = "1";
         subFrom.tellerNo = "900001005";
         subFrom.branchId = "900001";
         common_service.post(res.singleCheck.url,subFrom).then(function (data) {
-            $scope.idcardphoto = data.bsadata.photo;
-            var idcard = {};
-            idcard.vcherType = "101";
-            idcard.vcherNo = "522222199007112835";
-            idcard.name = "杨超";
-            idcard.visBrno = data.bsadata.visBrno;
-            $scope.subFrom.idcard = idcard;
-            console.log(data.bsadata)
+            console.log(data)
+            if(data.retCode == "TDCMCT08006"){
+                alert(data.retMsg);
+            }else{
+                $scope.idcardphoto = data.bsadata.photo;
+                var idcard = {};
+                idcard.vcherType = "101";
+                idcard.vcherNo = "522222199007112835";
+                idcard.name = "杨超";
+                idcard.visBrno = data.bsadata.visBrno;
+                $scope.subFrom.idcard = idcard;
+                $scope.iddetails = true;
+                console.log(data.bsadata)
+            }
+
         })
     }
-    //失败
-    card.idcarderror = function () {
-        
+    //联网核查成功后,进入拍照界面
+    card.successnext = function () {
+        $scope.takephoto = true;
     }
     /**---------------------------------模拟信息录入--------------------------------*/
     var personDetails = {};
     $scope.subFrom.personDetails = personDetails;
+    $scope.title1 = "点击发送验证码";
+    //点击发送验证码
+    card.validateph = function () {
+
+    }
 
 
     /**----------------------------------模拟产品签约--------------------------------*/

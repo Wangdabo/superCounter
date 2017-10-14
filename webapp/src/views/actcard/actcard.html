@@ -154,24 +154,33 @@
         <div class="col-md-12">
             <div class="tishidivst" style="border: 1px solid #0b94ea">
                 <p>请将身份证放到指定区域</p>
-                <div class="tishidiv" style="background:#ccc "></div>
+                <div class="tishidiv" style="background:#ccc " ng-click="card.open"></div>
                 <p>身份证读取中......  30 S</p>
+
             </div>
         </div>
     </div>
-    <div class="col-md-12">
-        <div class="col-md-2  col-md-offset-4">
-            <button type="button" name="back" class="btn btn-primary"  ng-click="card.idcardsuccess()"> 模拟审核通过
-            </button>
+    <form class="form-horizontal">
+        <div class="form-bodyform-body">
+            <div class="form-group">
+                <label class="control-label col-md-4">姓名:</label>
+                <div class="col-md-5">
+                    <input type="text" class="form-control" ng-model="idc.name"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-4">身份证号码:</label>
+                <div class="col-md-5">
+                    <input type="text" class="form-control" ng-model="idc.vcherNo"/>
+                </div>
+            </div>
+            <div class="col-md-4  col-md-offset-4">
+                <button type="button" name="back" class="btn btn-primary"  ng-click="card.idcardsuccess()"> 开始验证
+                </button>
+            </div>
         </div>
+    </form>
 
-        <div class="col-md-2 ">
-            <button type="button" name="back" class="btn btn-set" ng-click="card.idcarderror()"> 模拟审核失败
-            </button>
-        </div>
-
-
-    </div>
     <div class="col-md-12">
         <div class="backbtn">
             <a href="javascript:;" class="btn2" ng-click="card.back()">
@@ -184,7 +193,7 @@
     </div>
 </div>
 <!--身份审核通过-->
-<div ng-if="pageflag == 2 && iddetails == true" class="operinfo">
+<div ng-if="pageflag == 2 && iddetails == true && takephoto == false" class="operinfo">
     <div class="col-md-offset-2 col-md-8">
         <h1  class="opersuss"><em class="glyphicon glyphicon-ok-circle"></em>身份审核通过!</h1>
         <div class="col-md-12">
@@ -203,7 +212,21 @@
             <h1>有效期:2012.12.29 － 2032.12.29</h1>
         </div>
         <div class="col-md-offset-5 col-md-2">
-            <button type="button" ng-click="card.next(pageflag)" class="btn blue btn-block">下一步</button>
+            <button type="button" ng-click="card.successnext()" class="btn blue btn-block">下一步</button>
+        </div>
+    </div>
+</div>
+<!-- 视频拍照 -->
+<div ng-if="pageflag == 2 && iddetails == true && takephoto == true" class="operinfo">
+    <div class="col-md-offset-2 col-md-8">
+        <h1  class="opersuss">请正脸对准摄像头,准备影像采集</h1>
+        <div class="col-md-12">
+            <div class="col-md-10   operytrue">
+
+            </div>
+        </div>
+        <div class="col-md-offset-5 col-md-2">
+            <button type="button" ng-click="card.next(pageflag)" class="btn blue btn-block">模拟授权成功</button>
         </div>
     </div>
 </div>
@@ -224,7 +247,31 @@
                 </div>
             </div>
             <div class="form-group">
+                <label class="control-label col-md-4">联系地址:</label>
+                <div class="col-md-5">
+                    <input type="text" class="form-control"  ng-model="subFrom.personDetails.address"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-4">职业:</label>
+                <div class="col-md-5">
+                    <input type="text" class="form-control"  ng-model="subFrom.personDetails.job"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-4">公司名称:</label>
+                <div class="col-md-5">
+                    <input type="text" class="form-control"  ng-model="subFrom.personDetails.companyName"/>
+                </div>
+            </div>
+            <div class="form-group">
                 <label class="control-label col-md-4">电话:</label>
+                <div class="col-md-5">
+                    <input type="text" class="form-control" ng-model="subFrom.personDetails.phone"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-4">验证码:</label>
                 <div class="col-md-5">
                     <input type="text" class="form-control" ng-model="subFrom.personDetails.phone"/>
                 </div>
@@ -232,7 +279,8 @@
         </div>
         <div class="form-actionss">
             <div class="col-md-offset-6 col-md-1">
-                <button type="button" ng-click="card.next(pageflag)" class="btn blue btn-block">下一步</button>
+                <button type="button" ng-click="card.next(pageflag)" class="btn blue btn-block" ng-if="">下一步</button>
+                <button type="button" ng-click="card.validateph()" class="btn blue btn-block">{{title1}}</button>
             </div>
 
         </div>
