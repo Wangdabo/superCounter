@@ -1,4 +1,4 @@
-angular.module('myApp').controller('actcard_controller', function($scope, $interval,actcard_service,$rootScope,common_service){
+angular.module('myApp').controller('actcard_controller', function($scope, $interval,actcard_service,$rootScope,common_service,$state){
     var card = {};
     $scope.card = card;
     //所有信息对象
@@ -18,11 +18,16 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
     $scope.idcardphoto = idcardphoto;
     //查询所有个性化配置
     var res = $rootScope.res.actcard_service;//页面所需调用的服务
+    //返回首页
+    $scope.backhome  = function () {
+        $state.go('dashboard')
+    }
     //下一步
     card.next = function (pageflag) {
         console.log(pageflag)
         if(pageflag == 0){
             for(var i in $scope.bar){
+                $scope.bar[i].class = "todo";
                 $scope.bar[i].class = "todo";
             }
             $scope.bar[pageflag].class = "finished";
@@ -31,7 +36,7 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
             subFrom.tellerNo = "900001005";
             subFrom.branchId = "90091";
             common_service.post(res.queryCard.url,subFrom).then(function (data) {
-                $scope.cardtype = data.bsadata;
+                $scope.cardtype = data.bsadata;//后台返回样式
                 console.log(data.bsadata)
             })
         }else{
@@ -50,6 +55,8 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
             }
             if(pageflag == 6) {
                 console.log($scope.subFrom)
+                alert('恭喜开卡完成')
+                $state.go('dashboard')
             }
         }
         pageflag++;
@@ -116,18 +123,18 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
     var obar7 = {};
     obar7.class = "finished";
     obar7.num = "7";
-    obar7.text = "完成";
+    obar7.text = "开户成功";
     obar7.last = true;
     bar.push(obar7);
 
     /**--------------------------------模拟卡片类型-------------------------------*/
-    // var cardtype = [{"cardName":"白金卡","pictureName":"platinum","product":[{"des":"上善卡慈善主题 普通借记卡 投资理财 存取款 代发工资  普通借记卡 投资理财 存取款 代"}]},
-    //     {"cardName":"金卡","pictureName":"gold","product":[{"des":"上善卡慈善主题 普通借记卡 投资理财 存取款 代发工资  普通借记卡 投资理财 存取款 代"}]},
-    //     {"cardName":"黑色卡","pictureName":"gold","product":[{"des":"上善卡慈善主题 普通借记卡 投资理财 存取款 代发工资   普通借记卡 投资理财 存取款 代"}]},
-    //     {"cardName":"尊享卡","pictureName":"gold","product":[{"des":"上善卡慈善主题 普通借记卡 投资理财 存取款 代发工资  普通借记卡 投资理财 存取款 代"}]},
-    //     {"cardName":"青春卡","pictureName":"gold","product":[{"des":"上善卡慈善主题 普通借记卡 投资理财 存取款 代发工资   普通借记卡 投资理财 存取款 代"}]},
-    //     {"cardName":"量贩卡","pictureName":"gold","product":[{"des":"上善卡慈善主题 普通借记卡 投资理财 存取款 代发工资   普通借记卡 投资理财 存取款 代"}]}];
-    // $scope.cardtype = cardtype;
+    /*var cardtype = [{"cardName":"白金卡","pictureName":"platinum","product":[{"des":"上善卡慈善主题 普通借记卡 普通借记卡 投"}]},
+        {"cardName":"金卡","pictureName":"gold","product":[{"des":"上善卡慈善主题 普通借记卡 投资理财 存取款 代发工资  普通借"}]},
+        {"cardName":"黑色卡","pictureName":"gold","product":[{"des":"上善卡慈善主题 普通借记卡 投资理财 存取款 代发工资   普通 "}]},
+        {"cardName":"尊享卡","pictureName":"gold","product":[{"des":"上善卡慈善主题 普通借记卡 投资理财 存取款 代发工资  普通"}]},
+        {"cardName":"青春卡","pictureName":"gold","product":[{"des":"上善卡慈善主题 普通借记卡 投资理财 存取款 代发工资   普通"}]},
+        {"cardName":"量贩卡","pictureName":"gold","product":[{"des":"上善卡慈善主题 普通借记卡 投资理财 存取款 代发工资   普通"}]}];
+    $scope.cardtype = cardtype;*/
     //卡片详情页签控制
     var carddetails = false;
     $scope.carddetails = carddetails;
@@ -189,7 +196,8 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
     $scope.title1 = "点击发送验证码";
     //点击发送验证码
     card.validateph = function () {
-
+        alert("发送成功")
+        $scope.isnext = true;//让下一步显示
     }
 
 

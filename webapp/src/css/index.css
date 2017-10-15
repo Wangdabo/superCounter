@@ -51,7 +51,7 @@
     padding: 0 5%;
 }
 /*卡片盒子样式*/
-.cardtitle{
+/*.cardtitle{
     font-size:20px;
     margin-left: 30px;
     padding-top: 10px;
@@ -81,12 +81,9 @@
 
 .carboxtext>P{
     text-align: center;
-}
+}*/
 
 /*卡片详情页面*/
-.cardinfo{
-    margin-top:10%;
-}
 
 
 .cardinfoimg{
@@ -100,7 +97,7 @@
     font-weight:bold;
 }
 .carddesign{
-    margin-left:10%;
+    margin-left:18%;
 }
 
 .carddesign em{
@@ -129,9 +126,9 @@
 }
 
 /*身份审核通过页面*/
-.operinfo{
+/*.operinfo{
     margin:5% 0px;
-}
+}*/
 
 .opersuss{
     color:lawngreen;
@@ -157,28 +154,28 @@
     background: darkseagreen;
 }
 
-.operinfo{
+/*.operinfo{
     margin:2% 0px;
 
-}
+}*/
 
 .operinfo h1{
     font-weight:500;
 }
 
 /*信息录入*/
-.infoipport{
+/*.infoipport{
     margin-top:5%;
-}
+}*/
 
 .form-actionss{
     margin:5% 0px
 }
 
 /*产品签约样式*/
-.product{
+/*.product{
     margin:5% 0px;
-}
+}*/
 
 .productbox{
     padding:10px;
@@ -216,9 +213,9 @@
 }
 
 /* 信息确认样式*/
-.infocheck{
+/*.infocheck{
     margin:5% 0px;
-}
+}*/
 .infoqueh{
     padding-left:5%;
 }
@@ -251,7 +248,7 @@
 /* 签名区域*/
 .infoqm{
     position: relative;
-    margin-bottom: 50%;
+    /*margin-bottom: 50%;*/
 }
 
 

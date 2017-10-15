@@ -7,8 +7,8 @@
   margin-bottom: 37px; }
   .header .log {
     position: absolute;
-    top: 5px;
-    left: 250px; }
+    top: 13px;
+    left: 248px; }
   .header .active {
     height: 80px;
     width: 700px;
@@ -92,5 +92,357 @@
         margin-top: 15px; }
       .dashboard .card .card-overfloo .card-bottom .fabricImg2 {
         background: url("../images/fbj.png") center center no-repeat; }
+
+.proes {
+  position: absolute;
+  top: 152px;
+  left: 139px; }
+  .proes .procetu {
+    width: 100%; }
+    .proes .procetu .procechild {
+      float: left;
+      text-align: center;
+      position: relative; }
+      .proes .procetu .procechild .wrap .proceround {
+        width: 70px;
+        height: 70px;
+        position: relative;
+        margin-right: 50px; }
+        .proes .procetu .procechild .wrap .proceround img {
+          height: 70px;
+          width: 70px; }
+        .proes .procetu .procechild .wrap .proceround .probarsfirst {
+          position: absolute;
+          width: 163px;
+          background: #adaeaf;
+          height: 3px;
+          top: 31px;
+          left: -158px; }
+        .proes .procetu .procechild .wrap .proceround .probarslast {
+          position: absolute;
+          width: 163px;
+          background: #adaeaf;
+          height: 3px;
+          top: 31px;
+          right: -154px; }
+        .proes .procetu .procechild .wrap .proceround .roundnum {
+          position: absolute;
+          top: 22px;
+          left: 28px;
+          color: #fff; }
+        .proes .procetu .procechild .wrap .proceround .probars {
+          position: absolute;
+          width: 77px;
+          background: #adaeaf;
+          height: 3px;
+          left: 57px;
+          top: 31px; }
+    .proes .procetu .procechild:first-child {
+      padding-left: 106px; }
+  .proes .processtitle {
+    margin-top: 10px;
+    font-size: 20px;
+    color: #4d4d4d;
+    margin-left: -54px; }
+
+/*我要开卡样式*/
+.opencards {
+  margin: -2px 90px 86px 88px;
+  /*height: 758px;*/
+  background: #fff;
+  min-height: 758px; }
+  .opencards .opencardsone {
+    height: 758px;
+    position: relative; }
+    .opencards .opencardsone .respect {
+      margin-top: 49px;
+      margin-left: 35px; }
+      .opencards .opencardsone .respect span:nth-child(1) {
+        font-size: 25px;
+        color: #5f6165; }
+      .opencards .opencardsone .respect span:last-child {
+        font-size: 26px;
+        margin-left: 15px;
+        color: #ad7b04; }
+    .opencards .opencardsone .presentation {
+      margin: 91px 0 48px 0;
+      color: #9c9a9a;
+      font-size: 24px;
+      text-align: center; }
+    .opencards .opencardsone .process {
+      margin-top: 48px;
+      margin-bottom: 66px; }
+      .opencards .opencardsone .process .procetu {
+        width: 100%;
+        padding: 0 44px 0 45px; }
+        .opencards .opencardsone .process .procetu .procechild {
+          float: left;
+          text-align: center;
+          position: relative; }
+          .opencards .opencardsone .process .procetu .procechild .wrap .proceround {
+            width: 70px;
+            height: 70px;
+            position: relative;
+            margin-right: 50px; }
+            .opencards .opencardsone .process .procetu .procechild .wrap .proceround img {
+              height: 70px;
+              width: 70px; }
+            .opencards .opencardsone .process .procetu .procechild .wrap .proceround .probarsfirst {
+              position: absolute;
+              width: 116px;
+              background: #adaeaf;
+              height: 3px;
+              top: 31px;
+              left: -106px; }
+            .opencards .opencardsone .process .procetu .procechild .wrap .proceround .probarslast {
+              position: absolute;
+              width: 116px;
+              background: #adaeaf;
+              height: 3px;
+              top: 31px;
+              right: -103px; }
+            .opencards .opencardsone .process .procetu .procechild .wrap .proceround .roundnum {
+              position: absolute;
+              top: 22px;
+              left: 28px;
+              color: #fff; }
+            .opencards .opencardsone .process .procetu .procechild .wrap .proceround .probars {
+              position: absolute;
+              width: 77px;
+              background: #adaeaf;
+              height: 3px;
+              left: 57px;
+              top: 31px; }
+        .opencards .opencardsone .process .procetu .procechild:first-child {
+          padding-left: 106px; }
+      .opencards .opencardsone .process .processtitle {
+        margin-top: 20px;
+        font-size: 19px;
+        color: #4d4d4d;
+        margin-left: -54px; }
+    .opencards .opencardsone .yellocard {
+      width: 100%; }
+      .opencards .opencardsone .yellocard .opencardstyle {
+        width: 300px;
+        background: #fccf00;
+        height: 66px;
+        margin: 0 auto;
+        text-align: center;
+        line-height: 66px;
+        font-size: 26px; }
+    .opencards .opencardsone .yellocard:hover {
+      cursor: pointer; }
+    .opencards .opencardsone .openhom {
+      position: absolute;
+      bottom: -65px;
+      cursor: pointer; }
+      .opencards .opencardsone .openhom img {
+        float: left; }
+      .opencards .opencardsone .openhom .openback {
+        width: 100%;
+        padding-top: 18px;
+        padding-left: 66px; }
+        .opencards .opencardsone .openhom .openback span {
+          font-size: 20px;
+          display: inline-block;
+          color: #adaeaf; }
+  .opencards .opencardstyle {
+    margin-top: 95px;
+    padding: 0 60px;
+    position: relative;
+    height: 758px; }
+    .opencards .opencardstyle .cardboxes {
+      background: url("../images/conent.png") center no-repeat;
+      padding: 28px 54px 24px 54px; }
+      .opencards .opencardstyle .cardboxes .cardboxchild .imgdiv {
+        text-align: center; }
+        .opencards .opencardstyle .cardboxes .cardboxchild .imgdiv .cardname {
+          margin-bottom: 10px;
+          margin-top: 18px;
+          font-weight: bold;
+          font-size: 18px;
+          color: #000000; }
+        .opencards .opencardstyle .cardboxes .cardboxchild .imgdiv img {
+          width: 192px;
+          height: 116px; }
+      .opencards .opencardstyle .cardboxes .cardboxchild .carboxtext {
+        margin-top: 20px;
+        margin-bottom: 24px;
+        line-height: 20px;
+        color: #000; }
+    .opencards .opencardstyle .openout {
+      position: absolute;
+      bottom: -78px;
+      right: 0px;
+      cursor: pointer; }
+      .opencards .opencardstyle .openout img {
+        float: left; }
+      .opencards .opencardstyle .openout .openback {
+        width: 100%;
+        padding-top: 18px;
+        padding-left: 66px; }
+        .opencards .opencardstyle .openout .openback span {
+          font-size: 20px;
+          display: inline-block;
+          color: #adaeaf; }
+  .opencards .cardinfo {
+    margin-top: 120px;
+    min-height: 758px;
+    position: relative; }
+    .opencards .cardinfo .openout {
+      position: absolute;
+      bottom: -78px;
+      right: 0px;
+      cursor: pointer; }
+      .opencards .cardinfo .openout img {
+        float: left; }
+      .opencards .cardinfo .openout .openback {
+        width: 100%;
+        padding-top: 18px;
+        padding-left: 66px; }
+        .opencards .cardinfo .openout .openback span {
+          font-size: 20px;
+          display: inline-block;
+          color: #adaeaf; }
+  .opencards .identity {
+    margin-top: 95px;
+    min-height: 758px;
+    position: relative; }
+    .opencards .identity .openout {
+      position: absolute;
+      bottom: -78px;
+      right: 0px;
+      cursor: pointer; }
+      .opencards .identity .openout img {
+        float: left; }
+      .opencards .identity .openout .openback {
+        width: 100%;
+        padding-top: 18px;
+        padding-left: 66px; }
+        .opencards .identity .openout .openback span {
+          font-size: 20px;
+          display: inline-block;
+          color: #adaeaf; }
+  .opencards .identityOK {
+    margin-top: 95px;
+    min-height: 758px;
+    position: relative; }
+    .opencards .identityOK .openout {
+      position: absolute;
+      bottom: -78px;
+      right: 0px;
+      cursor: pointer; }
+      .opencards .identityOK .openout img {
+        float: left; }
+      .opencards .identityOK .openout .openback {
+        width: 100%;
+        padding-top: 18px;
+        padding-left: 66px; }
+        .opencards .identityOK .openout .openback span {
+          font-size: 20px;
+          display: inline-block;
+          color: #adaeaf; }
+  .opencards .pictures {
+    margin-top: 95px;
+    min-height: 758px;
+    position: relative; }
+    .opencards .pictures .openout {
+      position: absolute;
+      bottom: -78px;
+      right: 0px;
+      cursor: pointer; }
+      .opencards .pictures .openout img {
+        float: left; }
+      .opencards .pictures .openout .openback {
+        width: 100%;
+        padding-top: 18px;
+        padding-left: 66px; }
+        .opencards .pictures .openout .openback span {
+          font-size: 20px;
+          display: inline-block;
+          color: #adaeaf; }
+  .opencards .information {
+    margin-top: 95px;
+    min-height: 758px;
+    position: relative; }
+    .opencards .information .openout {
+      position: absolute;
+      bottom: -141px;
+      right: 0px;
+      cursor: pointer; }
+      .opencards .information .openout img {
+        float: left; }
+      .opencards .information .openout .openback {
+        width: 100%;
+        padding-top: 18px;
+        padding-left: 66px; }
+        .opencards .information .openout .openback span {
+          font-size: 20px;
+          display: inline-block;
+          color: #adaeaf; }
+  .opencards .produc {
+    margin-top: 95px;
+    min-height: 758px;
+    position: relative; }
+    .opencards .produc .openout {
+      position: absolute;
+      bottom: -78px;
+      right: 0px;
+      cursor: pointer; }
+      .opencards .produc .openout img {
+        float: left; }
+      .opencards .produc .openout .openback {
+        width: 100%;
+        padding-top: 18px;
+        padding-left: 66px; }
+        .opencards .produc .openout .openback span {
+          font-size: 20px;
+          display: inline-block;
+          color: #adaeaf; }
+  .opencards .infosuccess {
+    margin-top: 95px;
+    min-height: 758px;
+    position: relative; }
+    .opencards .infosuccess .openout {
+      position: absolute;
+      bottom: -78px;
+      right: 0px;
+      cursor: pointer; }
+      .opencards .infosuccess .openout img {
+        float: left; }
+      .opencards .infosuccess .openout .openback {
+        width: 100%;
+        padding-top: 18px;
+        padding-left: 66px; }
+        .opencards .infosuccess .openout .openback span {
+          font-size: 20px;
+          display: inline-block;
+          color: #adaeaf; }
+  .opencards .passwordsucc {
+    margin-top: 95px;
+    min-height: 758px;
+    position: relative; }
+    .opencards .passwordsucc .openout {
+      position: absolute;
+      bottom: -78px;
+      right: 0px;
+      cursor: pointer; }
+      .opencards .passwordsucc .openout img {
+        float: left; }
+      .opencards .passwordsucc .openout .openback {
+        width: 100%;
+        padding-top: 18px;
+        padding-left: 66px; }
+        .opencards .passwordsucc .openout .openback span {
+          font-size: 20px;
+          display: inline-block;
+          color: #adaeaf; }
+
+/*.opencardtwo{
+  margin: -2px 90px 86px 88px;
+  height: 758px;
+  background: #edf9ff;
+  border:1px solid red;
+}*/
 
 /*# sourceMappingURL=dashboar.css.map */
