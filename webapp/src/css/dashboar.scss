@@ -12,7 +12,6 @@ $relative:relative;
 }
 
 
-
 /*头部样式*/
 .header{
   margin-top:$headtop;
@@ -364,7 +363,7 @@ $relative:relative;
           .imgdiv{
             .cardname{
               margin-bottom: 10px;
-              margin-top: 18px;
+              margin-top: 20px;
               font-weight:bold;
               font-size: 18px;
               color: #000000;
@@ -513,7 +512,7 @@ $relative:relative;
 
   //第七个页面 信息录入
   .information{
-    margin-top:95px;
+    margin-top:125px;
     min-height: 758px;
     position: relative;
     //退出样式
@@ -567,7 +566,7 @@ $relative:relative;
 
   //第九个页面  信息确认
   .infosuccess{
-    margin-top:95px;
+    margin-top:125px;
     min-height: 758px;
     position: relative;
     //退出样式
@@ -595,9 +594,15 @@ $relative:relative;
 
   //第十个页面 设置密码
   .passwordsucc{
-    margin-top:95px;
+    margin-top:125px;
     min-height: 758px;
     position: relative;
+    .cardtitle{
+      color:lawngreen;
+      font-weight:normal;
+      font-size:22px;
+      margin-left:10px;
+    }
     //退出样式
     .openout{
       position: absolute;
@@ -619,6 +624,53 @@ $relative:relative;
       }
     }
   }
+
+  //第十一个页面 开卡完成
+  .opencomplete{
+    margin-top:125px;
+    min-height: 758px;
+    position: relative;
+    //开卡完成提示语
+    h1{
+      color:green;
+      font-size: 22px;
+    }
+    h2{
+      color:red;
+      font-size: 22px;
+    }
+    //广告栏文字样式
+    .advertitle{
+      .advertext{
+        font-size: 16px;
+        margin-top:5px;
+      }
+    }
+    .advertitle:hover{
+      text-decoration:none;
+    }
+    //退出样式
+    .openout{
+      position: absolute;
+      bottom:-78px;
+      right: 0px;
+      cursor: pointer;
+      img{
+        float: left;
+      }
+      .openback{
+        width: 100%;
+        padding-top: 18px;
+        padding-left: 66px;
+        span{
+          font-size: 20px;
+          display: inline-block;
+          color: #adaeaf;
+        }
+      }
+    }
+  }
+
 }
 
 

@@ -26,11 +26,7 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
     card.next = function (pageflag) {
         console.log(pageflag)
         if(pageflag == 0){
-            for(var i in $scope.bar){
-                $scope.bar[i].class = "todo";
-                $scope.bar[i].class = "todo";
-            }
-            $scope.bar[pageflag].class = "finished";
+            $scope.bar[pageflag].img = "./images/select.png";
             //请求卡片数据
             var subFrom = {};
             subFrom.tellerNo = "900001005";
@@ -40,10 +36,7 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
                 console.log(data.bsadata)
             })
         }else{
-            $scope.bar[pageflag].class = "finished";
-            if(pageflag == 2){
-
-            }
+            $scope.bar[pageflag].img = "./images/select.png";
             if(pageflag == 3){
                 //查询产品信息
                 var subFrom = {};
@@ -54,12 +47,9 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
                 })
             }
             if(pageflag == 6) {
-                console.log($scope.subFrom)
-                alert('恭喜开卡完成')
-                $state.go('dashboard')
             }
         }
-        pageflag++;
+        pageflag++;//利用next方法，让pageflag++,相同步骤的子页面，不使用next方法，利用ng-if条件来控制页面显示隐藏，就完成了pageflag与bar对应的控制
         $scope.pageflag = pageflag;
         console.log($scope.subFrom)
     }
@@ -83,6 +73,7 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
     obar1.num = "1";
     obar1.text = "选择卡片";
     obar1.last = false;
+    obar1.img = './images/noselect.png'
     bar.push(obar1);
 
     var obar2 = {};
@@ -90,6 +81,7 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
     obar2.num = "2";
     obar2.text = "身份审核";
     obar2.last = false;
+    obar2.img = './images/noselect.png'
     bar.push(obar2);
 
     var obar3 = {};
@@ -97,6 +89,7 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
     obar3.num = "3";
     obar3.text = "信息录入";
     obar3.last = false;
+    obar3.img = './images/noselect.png'
     bar.push(obar3);
 
     var obar4 = {};
@@ -104,6 +97,7 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
     obar4.num = "4";
     obar4.text = "产品签约";
     obar4.last = false;
+    obar4.img = './images/noselect.png'
     bar.push(obar4);
 
     var obar5 = {};
@@ -111,6 +105,7 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
     obar5.num = "5";
     obar5.text = "信息确认";
     obar5.last = false;
+    obar5.img = './images/noselect.png'
     bar.push(obar5);
 
     var obar6 = {};
@@ -118,6 +113,7 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
     obar6.num = "6";
     obar6.text = "设置密码";
     obar6.last = false;
+    obar6.img = './images/noselect.png'
     bar.push(obar6);
 
     var obar7 = {};
@@ -125,6 +121,7 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
     obar7.num = "7";
     obar7.text = "开户成功";
     obar7.last = true;
+    obar7.img = './images/noselect.png'
     bar.push(obar7);
 
     /**--------------------------------模拟卡片类型-------------------------------*/
@@ -151,7 +148,7 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
     
     /**---------------------------------模拟身份信息读取------------------------------*/
     //身份读取页签控制
-    var iddetails = false;
+    var iddetails = false;//默认false
     $scope.iddetails = iddetails;
     var takephoto = false;
     $scope.takephoto = takephoto;
