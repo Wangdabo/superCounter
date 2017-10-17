@@ -50,11 +50,11 @@
                 <div class="{{d.class}} procechild" id="1" +{{d.num}} ng-repeat="d in bar track by $index">
                     <div class="wrap">
                         <div class="proceround">
-                                <img src="./images/anniu.png"  class="proceround">
-                                <div class="probarsfirst" ng-show="$index==0"></div>
-                                <div class="probarslast" ng-show="$last"></div>
-                                <div class="roundnum">{{d.num}}</div>
-                                <div class="probars" ng-show="!{{d.last}}"></div>
+                            <img src="./images/anniu.png"  class="proceround">
+                            <div class="probarsfirst" ng-show="$index==0"></div>
+                            <div class="probarslast" ng-show="$last"></div>
+                            <div class="roundnum">{{d.num}}</div>
+                            <div class="probars" ng-show="!{{d.last}}"></div>
                         </div>
                     </div>
                     <label class="processtitle">{{d.text}}</label>
@@ -152,8 +152,8 @@
                         <img src="../assets/global/img/{{d.pictureName}}.png">
                     </div>
                     <div class="carboxtext" >
-                        <p class="col-md-12" ng-repeat="c in d.product track by $index">
-                            {{c.des}}
+                        <p class="col-md-4" ng-repeat="c in d.product track by $index">
+                            测试
                         </p>
                     </div>
                 </div>
@@ -205,10 +205,7 @@
             </div>
         </div>
         <div class="col-md-6"  style="padding:0 10%;">
-            <p>可图文并貌的描述 该卡片的详细信息....</p>
-            <p>（1）策略模式提供了管理相关的算法族的办法。策略类的等级结构定义了一个算法或行为族。恰当使用继承可以把公共的代码移到父类里面，从而避免代码重复。</p>
-            <p>（2）使用策略模式可以避免使用多重条件(if-else)语句。多重条件语句不易维护，它把采取哪一种算法或采取哪一种行为的逻辑与算法或行为的逻辑混合在一起，统统列在一个多重条件语句里面，比使用继承的办法还要原始和落后</p>
-            <p>（1）客户端必须知道所有的策略类，并自行决定使用哪一个策略类。这就意味着客户端必须理解这些算法的区别，以便适时选择恰当的算法类。换言之，策略模式只适用于客户端知道算法或行为的情况。</p>
+            <p ng-repeat="d in subFrom.carditem.details">&nbsp;&nbsp;{{d}}</p>
         </div>
         <div class="col-md-12">
             <div class="col-md-2 col-md-offset-2">
@@ -378,7 +375,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-4">验证码:</label>
                     <div class="col-md-5">
-                        <input type="text" class="form-control" ng-model="subFrom.personDetails.phone"/>
+                        <input type="text" class="form-control" ng-model="subFrom.vCode"/>
                     </div>
                 </div>
             </div>
@@ -454,38 +451,38 @@
 </div>
 <!-- 信息确认 -->
 <div ng-show="pageflag == 5"class="infocheck opencards clearfix">
-        <div class="infosuccess">
-            <div class="col-md-6 infoqueh">
-                <h1>尊敬的用户:{{subFrom.idcard.name}}</h1>
-                <h1>您即将开立我行{{subFrom.carditem.cardName}}</h1>
-                <h1>包括开通以下业务:</h1>
-                <p ng-repeat="d in subFrom.selectProduct"  class="infodict">{{d.name}}</p>
-                <div class="float-left">
-                    <h1>其中{{d.name}}其中转账限额:</h1>
-                    <p class="infodict">单笔 50000，日累积转账限额 500000</p>
-                    <!--<h2 ng-repeat="d in subFrom.selectProduct">其中{{d.name}}开通以下业务:
-                        <p ng-repeat="c in d.option">{{c.optionName}}</p>
-                    </h2>-->
-                </div>
+    <div class="infosuccess">
+        <div class="col-md-6 infoqueh">
+            <h1>尊敬的用户:{{subFrom.idcard.name}}</h1>
+            <h1>您即将开立我行{{subFrom.carditem.cardName}}</h1>
+            <h1>包括开通以下业务:</h1>
+            <p ng-repeat="d in subFrom.selectProduct"  class="infodict">{{d.name}}</p>
+            <div class="float-left">
+                <h1>其中{{d.name}}其中转账限额:</h1>
+                <p class="infodict">单笔 50000，日累积转账限额 500000</p>
+                <!--<h2 ng-repeat="d in subFrom.selectProduct">其中{{d.name}}开通以下业务:
+                    <p ng-repeat="c in d.option">{{c.optionName}}</p>
+                </h2>-->
             </div>
-            <div class="col-md-6 infoqm">
-                <div class="infodiv">
-                    <p>请进行客户签名</p>
-                </div>
-                <div class="float-left">
-                    <div class="col-md-3 col-md-offset-4  inofnexxt">
-                        <button type="button" class="btn blue btn-block" ng-click="card.next(pageflag)">确认信息</button>
-                    </div>
-                </div>
+        </div>
+        <div class="col-md-6 infoqm">
+            <div class="infodiv">
+                <p>请进行客户签名</p>
             </div>
-            <div class="openout" ng-click="backhome()">
-                <img src="./images/out.png">
-                <div class="openback">
-                    <span>退出</span>
+            <div class="float-left">
+                <div class="col-md-3 col-md-offset-4  inofnexxt">
+                    <button type="button" class="btn blue btn-block" ng-click="card.next(pageflag)">确认信息</button>
                 </div>
             </div>
         </div>
+        <div class="openout" ng-click="backhome()">
+            <img src="./images/out.png">
+            <div class="openback">
+                <span>退出</span>
+            </div>
+        </div>
     </div>
+</div>
 </div>
 <!-- 设置密码 -->
 <div ng-show="pageflag == 6" class="opencards clearfix">

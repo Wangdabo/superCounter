@@ -32,6 +32,9 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
             subFrom.tellerNo = "900001005";
             subFrom.branchId = "90091";
             common_service.post(res.queryCard.url,subFrom).then(function (data) {
+                var a = {};
+                a.code = "测试"
+                data.bsadata[0].product.push(a);
                 $scope.cardtype = data.bsadata;//后台返回样式
                 console.log(data.bsadata)
             })
@@ -44,6 +47,7 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
                 subFrom.branchId = "90091";
                 common_service.post(res.queryProduct.url,subFrom).then(function (data) {
                     $scope.productList = data.bsadata;
+                    console.log(data.bsadata);
                 })
             }
             if(pageflag == 6) {
@@ -125,13 +129,13 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
     bar.push(obar7);
 
     /**--------------------------------模拟卡片类型-------------------------------*/
-    /*var cardtype = [{"cardName":"白金卡","pictureName":"platinum","product":[{"des":"上善卡慈善主题 普通借记卡 普通借记卡 投"}]},
-        {"cardName":"金卡","pictureName":"gold","product":[{"des":"上善卡慈善主题 普通借记卡 投资理财 存取款 代发工资  普通借"}]},
-        {"cardName":"黑色卡","pictureName":"gold","product":[{"des":"上善卡慈善主题 普通借记卡 投资理财 存取款 代发工资   普通 "}]},
-        {"cardName":"尊享卡","pictureName":"gold","product":[{"des":"上善卡慈善主题 普通借记卡 投资理财 存取款 代发工资  普通"}]},
-        {"cardName":"青春卡","pictureName":"gold","product":[{"des":"上善卡慈善主题 普通借记卡 投资理财 存取款 代发工资   普通"}]},
-        {"cardName":"量贩卡","pictureName":"gold","product":[{"des":"上善卡慈善主题 普通借记卡 投资理财 存取款 代发工资   普通"}]}];
-    $scope.cardtype = cardtype;*/
+    // var test = [{"cardName":"白金卡","pictureName":"platinum","product":[{"des":"上善卡慈善主题 普通借记卡 普通借记卡 投"}]},
+    //     {"cardName":"金卡","pictureName":"gold","product":[{"des":"上善卡慈善主题 普通借记卡 投资理财 存取款 代发工资  普通借"}]},
+    //     {"cardName":"黑色卡","pictureName":"gold","product":[{"des":"上善卡慈善主题 普通借记卡 投资理财 存取款 代发工资   普通 "}]},
+    //     {"cardName":"尊享卡","pictureName":"gold","product":[{"des":"上善卡慈善主题 普通借记卡 投资理财 存取款 代发工资  普通"}]},
+    //     {"cardName":"青春卡","pictureName":"gold","product":[{"des":"上善卡慈善主题 普通借记卡 投资理财 存取款 代发工资   普通"}]},
+    //     {"cardName":"量贩卡","pictureName":"gold","product":[{"des":"上善卡慈善主题 普通借记卡 投资理财 存取款 代发工资   普通"}]}];
+    // $scope.test = test;
     //卡片详情页签控制
     var carddetails = false;
     $scope.carddetails = carddetails;
@@ -182,6 +186,24 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
             }
 
         })
+
+        common_service.post(res.queryBlackList.url,subFrom).then(function (data) {
+            console.log(data)
+            if(data.retCode == "TDCMCT08006"){
+                alert(data.retMsg);
+            }else{
+                // $scope.idcardphoto = data.bsadata.photo;
+                // var idcard = {};
+                // idcard.vcherType = "101";
+                // idcard.vcherNo = "522222199007112835";
+                // idcard.name = "杨超";
+                // idcard.visBrno = data.bsadata.visBrno;
+                // $scope.subFrom.idcard = idcard;
+                // $scope.iddetails = true;
+                console.log(data.retMsg)
+            }
+
+        })
     }
     //联网核查成功后,进入拍照界面
     card.successnext = function () {
@@ -193,7 +215,16 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
     $scope.title1 = "点击发送验证码";
     //点击发送验证码
     card.validateph = function () {
-        alert("发送成功")
+        // common_service.post(res.queryMessageCheck.url,subFrom).then(function (data) {
+        //     console.log(data)
+        //     if(data.retCode == "TDCMCT08006"){
+        //         alert(data.retMsg);
+        //     }else{
+        //         console.log(data.retMsg)
+        //     }
+        //
+        // })
+        alert("发送成功");
         $scope.isnext = true;//让下一步显示
     }
 
