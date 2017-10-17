@@ -257,19 +257,21 @@
       .opencards .opencardstyle .cardboxes .cardboxchild .imgdiv {
         text-align: center; }
         .opencards .opencardstyle .cardboxes .cardboxchild .imgdiv .cardname {
-          margin-bottom: 10px;
-          margin-top: 20px;
+          margin-bottom: 5px;
+          margin-top: 8px;
           font-weight: bold;
           font-size: 18px;
           color: #000000; }
         .opencards .opencardstyle .cardboxes .cardboxchild .imgdiv img {
+          margin-top: 10px;
           width: 192px;
           height: 116px; }
       .opencards .opencardstyle .cardboxes .cardboxchild .carboxtext {
         margin-top: 20px;
         margin-bottom: 24px;
         line-height: 20px;
-        color: #000; }
+        color: #000;
+        overflow: hidden; }
     .opencards .opencardstyle .openout {
       position: absolute;
       bottom: -78px;

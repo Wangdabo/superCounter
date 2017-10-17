@@ -33,7 +33,7 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
             subFrom.branchId = "90091";
             common_service.post(res.queryCard.url,subFrom).then(function (data) {
                 var a = {};
-                a.code = "测试"
+                a.code = "测试1312312313131"
                 data.bsadata[0].product.push(a);
                 $scope.cardtype = data.bsadata;//后台返回样式
                 console.log(data.bsadata)

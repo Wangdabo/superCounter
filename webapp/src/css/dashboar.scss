@@ -362,14 +362,15 @@ $relative:relative;
       .cardboxchild{
           .imgdiv{
             .cardname{
-              margin-bottom: 10px;
-              margin-top: 20px;
+              margin-bottom: 5px;
+              margin-top: 8px;
               font-weight:bold;
               font-size: 18px;
               color: #000000;
             }
             text-align: center;
             img{
+              margin-top:10px;
               width: 192px;
               height: 116px;
             }
@@ -379,6 +380,7 @@ $relative:relative;
           margin-bottom: 24px;
           line-height:20px;
           color: #000;
+          overflow: hidden;
         }
       }
     }
