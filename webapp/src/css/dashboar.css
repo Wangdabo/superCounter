@@ -258,7 +258,7 @@
         text-align: center; }
         .opencards .opencardstyle .cardboxes .cardboxchild .imgdiv .cardname {
           margin-bottom: 5px;
-          margin-top: 8px;
+          margin-top: 12px;
           font-weight: bold;
           font-size: 18px;
           color: #000000; }
@@ -267,11 +267,12 @@
           width: 192px;
           height: 116px; }
       .opencards .opencardstyle .cardboxes .cardboxchild .carboxtext {
-        margin-top: 20px;
+        margin-top: 10px;
         margin-bottom: 24px;
         line-height: 20px;
         color: #000;
-        overflow: hidden; }
+        overflow: hidden;
+        text-align: center; }
     .opencards .opencardstyle .openout {
       position: absolute;
       bottom: -78px;

@@ -363,7 +363,7 @@ $relative:relative;
           .imgdiv{
             .cardname{
               margin-bottom: 5px;
-              margin-top: 8px;
+              margin-top: 12px;
               font-weight:bold;
               font-size: 18px;
               color: #000000;
@@ -376,11 +376,12 @@ $relative:relative;
             }
           }
         .carboxtext{
-          margin-top:20px;
+          margin-top:10px;
           margin-bottom: 24px;
           line-height:20px;
           color: #000;
           overflow: hidden;
+          text-align: center
         }
       }
     }

@@ -95,11 +95,10 @@
                         </p>
                         <img src="./assets/global/img/{{d.pictureName}}.png">
                     </div>
-                    <div class="carboxtext" >
-                        <!--<p class="col-md-4" ng-repeat="c in d.product track by $index">
-                            {{c.code}}
-                        </p>-->
-                            测试测试测试测试测试测试测试测试测试测试
+                    <div class="carboxtext">
+                        <div  ng-repeat="c in d.characteristic track by $index">
+                            {{c}}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -111,21 +110,14 @@
             </div>
         </div>
     </div>
-    <!--<div class="backbtn col-md-12">
-        <a href="javascript:;" class="btn2" ng-click="card.back()">
-            <i class="fa fa-arrow-circle-left fa-3x"></i>
-            <div>
-                取消
-            </div>
-        </a>
-    </div>-->
+
 </div>
 <!-- 卡片内容 -->
 <div ng-if="pageflag == 1 && carddetails == true"  class="opencards clearfix">
     <div class="row cardinfo" >
         <div class="col-md-6">
             <div class="cardinfoimg">
-                < img src="../assets/global/img/{{subFrom.carditem.pictureName}}.png" class="smimgdiv"/>
+                <img src="../assets/global/img/{{subFrom.carditem.pictureName}}.png" class="smimgdiv"/>
                 <h1 class="float-left">{{subFrom.carditem.cardName}}</h1>
             </div>
             <div class="float-left  carddesign" ng-repeat="c in subFrom.carditem.product track by $index">
@@ -422,14 +414,14 @@
                 请输入账户密码，该密码将用于账务查询、转账、支付等功能！
             </h1>
         </div>
-        <form class="form-horizontal">
+        <form class="form-horizontal" name="myform">
             <div class="form-bodyform-body clearfix">
                 <div class="col-md-12 password">
                     <div class="col-md-6 col-md-offset-3">
                         <div class="form-group clearfix">
-                            <label class="control-label col-md-4">账户密码:</label>
+                            <label class="control-label col-md-4">账户密码:<span ng-class="{required:myform.password.$invalid}"  >* </span></label>
                             <div class="col-md-6">
-                                <input type="password" class="form-control" ng-model="subFrom.passWord"/>
+                                <input type="password" class="form-control" required  name="password" ng-model="subFrom.passWord"/>
                             </div>
                         </div>
                     </div>
@@ -437,9 +429,9 @@
                 <div class="col-md-12 password">
                     <div class="col-md-6 col-md-offset-3">
                         <div class="form-group clearfix">
-                            <label class="control-label col-md-4">确认密码:</label>
+                            <label class="control-label col-md-4">确认密码:<span ng-class="{required:myform.passwordtwo.$invalid}"  >* </span></label>
                             <div class="col-md-6">
-                                <input type="password" class="form-control" ng-model="repassWord"/>
+                                <input type="password" class="form-control" ng-model="repassWord"  required  name="passwordtwo"/>
                                 <span style="color:red" ng-show="subFrom.passWord!=repassWord">两次密码不一致</span>
                             </div>
                         </div>
@@ -447,7 +439,10 @@
                 </div>
                 <div class="col-md-12">
                     <div class="col-md-offset-6 col-md-2">
-                        <button type="button" ng-click="card.next(pageflag)" class="btn blue btn-block">确认密码</button>
+                        <button type="button" name="back"  class="btn blue btn-block" ng-if="myform.$invalid == false"  ng-disabled="myform.$invalid" popover-trigger="mouseenter" ng-click="card.next(pageflag)" > 确认密码
+                        </button>
+                        <button type="button" name="back" class="btn default" ng-if="myform.$invalid == true"  ng-disabled="myform.$invalid" popover-trigger="mouseenter" > 确认密码
+                        </button>
                     </div>
                 </div>
             </div>
