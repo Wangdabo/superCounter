@@ -170,7 +170,7 @@
                     <label class="control-label col-md-4">身份证号码:</label>
                     <div class="col-md-5">
                         <input type="text" class="form-control" ng-model="idc.vcherNo"/>
-                        <span style="color:red" ng-show="idc.vcherNo.length!=18">身份证号码不能低于18位</span>
+                        <span style="color:red" ng-show="idc.vcherNo.length<18||idc.vcherNo.length>18&&idc.vcherNo.length>2">身份证号码不能低于18位</span>
                     </div>
                 </div>
                 <div class="col-md-4  col-md-offset-6">

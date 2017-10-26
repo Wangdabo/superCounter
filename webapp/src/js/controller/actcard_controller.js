@@ -16,6 +16,9 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
     //身份证图片
     var idcardphoto = "";
     $scope.idcardphoto = idcardphoto;
+    //全局流水号
+    var transSerialNo = "";
+    $scope.transSerialNo = transSerialNo;
     //查询所有个性化配置
     var res = $rootScope.res.actcard_service;//页面所需调用的服务
     //返回首页
@@ -38,6 +41,18 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
                 $scope.cardtype = data.bsadata;//后台返回样式
                 console.log(data.bsadata)
             })
+            subFrom = {};
+            var COH = {};
+            var CTL = {};
+            COH.TRANSINSTNO = "900001";
+            COH.TRANSTELLER = "900001001";
+            CTL.serialNoCounts = "1";
+            subFrom.COH = COH;
+            subFrom.CTL = CTL;
+            common_service.post(res.TWScreateSerialNo.url,subFrom).then(function (data) {
+                $scope.transSerialNo = data.bsadata.serialNoList;
+                console.log($scope.transSerialNo)
+            })
         }else{
             $scope.bar[pageflag].img = "./images/select.png";
             if(pageflag == 3){
@@ -51,6 +66,49 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
                 })
             }
             if(pageflag == 6) {
+                //确认开卡.
+                var subFrom = {};
+                var BDY = {};
+                var COH = {};
+                var CTL = {};
+                BDY = $scope.subFrom;
+                var now = new Date();
+                //COH
+                COH.TRANSDATE = now;
+                COH.TRANSTELLER = "900001001";
+                COH.AUTHTELLER = "";
+                COH.AGENTINSTNO = "";
+                COH.TRANSSTARTTIME = now;
+                COH.WORKSTATIONIP = "";
+                COH.CHECKTELLER = "";
+                COH.branchId = "90001";
+                COH.globalSeqNo = "0000";
+                COH.TRANSTELLERPWD = "0000";
+                COH.TRANSCODE = "TX00100101";
+                COH.orgName = "0000";
+                COH.SERVICESERIALNO = "0000";
+                COH.medium = "0000";
+                COH.consumerId = "301";
+                COH.TELLERWORKMODEL = "6";
+                COH.TRANSSERIALNO = $scope.transSerialNo;
+                COH.TRANSINSTNO = "90001";
+                COH.TRANSTIME = now;
+                COH.TRANSAUTHNO = "";
+                //CTL
+                CTL.TRANSMODELSERVICE = "TCM";
+                CTL.TRANSMODEL = "5";
+                CTL.RECORDNUM = "0";
+                CTL.FILENAME = "";
+                CTL.FUNCODE = "I";
+                CTL.OPERATEMODEL = "6";
+                CTL.PAGELENGTH = "20";
+                CTL.PAGENO = "0";
+                subFrom.BDY = BDY;
+                subFrom.CTL = CTL;
+                subFrom.COH = COH;
+                common_service.post(res.TranServer.url,subFrom).then(function (data) {
+                    console.log(data);
+                })
             }
         }
         pageflag++;//利用next方法，让pageflag++,相同步骤的子页面，不使用next方法，利用ng-if条件来控制页面显示隐藏，就完成了pageflag与bar对应的控制
@@ -149,7 +207,7 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
         $scope.carddetails = false;
         $scope.subFrom.carditem = {};
     }
-    
+
     /**---------------------------------模拟身份信息读取------------------------------*/
     //身份读取页签控制
     var iddetails = false;//默认false
@@ -172,7 +230,10 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
         common_service.post(res.singleCheck.url,subFrom).then(function (data) {
             console.log(data)
             if(data.retCode == "TDCMCT08006"){
-                alert(data.retMsg);
+                alert(data.retMsg+"将于2秒内退出");
+                $timeout(function() {
+                    $state.go('dashboard')
+                },2000);
             }else{
                 $scope.idcardphoto = data.bsadata.photo;
                 var idcard = {};
@@ -189,7 +250,7 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
 
         common_service.post(res.queryBlackList.url,subFrom).then(function (data) {
             console.log(data)
-            if(data.retCode == "TDCMCT08006"){
+            if(data.retCode == "TDCMCT08104"){
                 alert(data.retMsg);
             }else{
                 // $scope.idcardphoto = data.bsadata.photo;
@@ -238,15 +299,16 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
     //     {"productName":"电话银行","option":[{"optionName":"开通","optionValue":"00"},{"optionName":"需要动态口令","optionValue":"01"},{"optionName":"转账限额","optionValue":"02"}]},
     //                     ];
     // $scope.productList = productList;
-    
+
     //确认签约
     card.sign = function (pageflag) {
         //组装数据展示
         var selectProduct = [];
         //挑选用户选择项
+        console.log($scope.productList)
         for(var i in $scope.productList) {
             var item = $scope.productList[i];
-            if(item.ischecked){
+            if(item.option[0].ischecked){
                 var product = {};
                 product.name = item.productName;
                 product.option = [];
@@ -259,14 +321,14 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
                 console.log(selectProduct)
             }
         }
-        // $scope.subFrom.selectProduct = selectProduct;
-        //测试样式
-        var testselsr = [
-            {"name":"网上银行"},
-            {"name":"手机银行"},
-            {"name":"电话银行"}
-        ]
-        $scope.subFrom.selectProduct = testselsr;
+        $scope.subFrom.selectProduct = selectProduct;
+        // //测试样式
+        // var testselsr = [
+        //     {"name":"网上银行"},
+        //     {"name":"手机银行"},
+        //     {"name":"电话银行"}
+        // ]
+        // $scope.subFrom.selectProduct = testselsr;
         card.next(pageflag);
 
     }
