@@ -7,6 +7,6 @@
     "queryMessageCheck": {"url":"http://139.196.145.67:9001/padServer/OnlineCheckServer/queryMessageCheck","emo":"黑名单校验 "},
     "UPLOADFILE": {"url":"http://139.196.145.67:9006/padServer/UPLOADFILE","emo":"上传影像图片"},
     "TWScreateSerialNo": {"url":"http://139.196.145.67:9001/padServer/SimpleServer/TWScreateSerialNo","emo":"获取流水号"},
-    "TranServer": {"url":"http://139.196.145.67:9001/padServer/TranServer/","emo":"开卡交易"}
+    "TranServer": {"url":"http://139.196.145.67:9001/padServer/TranServer/TX00100101","emo":"开卡交易"}
   }
 }
