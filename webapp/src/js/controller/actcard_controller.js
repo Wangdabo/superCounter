@@ -1,4 +1,4 @@
-angular.module('myApp').controller('actcard_controller', function($scope, $interval,actcard_service,$rootScope,common_service,$state){
+angular.module('myApp').controller('actcard_controller', function($scope, $interval,actcard_service,$rootScope,common_service,$state,$timeout){
     var card = {};
     $scope.card = card;
     //所有信息对象
@@ -229,11 +229,7 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
         subFrom.branchId = "900001";
         common_service.post(res.singleCheck.url,subFrom).then(function (data) {
             console.log(data)
-            if(data.retCode == "TDCMCT08006"){
-                alert(data.retMsg+"将于2秒内退出");
-                $timeout(function() {
-                    $state.go('dashboard')
-                },2000);
+            if(data.retCode == "TNCMCT08104"){//交易失败逻辑
             }else{
                 $scope.idcardphoto = data.bsadata.photo;
                 var idcard = {};
@@ -242,16 +238,20 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
                 idcard.name = "杨超";
                 idcard.visBrno = data.bsadata.visBrno;
                 $scope.subFrom.idcard = idcard;
-                $scope.iddetails = true;
+
                 console.log(data.bsadata)
             }
 
         })
-
         common_service.post(res.queryBlackList.url,subFrom).then(function (data) {
             console.log(data)
-            if(data.retCode == "TDCMCT08104"){
-                alert(data.retMsg);
+            if(data.retCode == "TNCMCT08104"){
+                toastr['error'](data.retMsg+"将于2秒内退出");
+                $scope.iddetails = false;
+                $scope.takephoto  =false;
+                $timeout(function() {
+                    $state.go('dashboard')
+                },2000);
             }else{
                 // $scope.idcardphoto = data.bsadata.photo;
                 // var idcard = {};
@@ -261,6 +261,7 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
                 // idcard.visBrno = data.bsadata.visBrno;
                 // $scope.subFrom.idcard = idcard;
                 // $scope.iddetails = true;
+                $scope.iddetails = true;//成功则进入下一页面
                 console.log(data.retMsg)
             }
 
