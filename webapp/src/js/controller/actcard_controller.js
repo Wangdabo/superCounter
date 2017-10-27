@@ -1,4 +1,4 @@
-angular.module('myApp').controller('actcard_controller', function($scope, $interval,actcard_service,$rootScope,common_service,$state,$timeout){
+angular.module('myApp').controller('actcard_controller', function($scope, $interval,actcard_service,$rootScope,common_service,$state){
     var card = {};
     $scope.card = card;
     //所有信息对象
@@ -36,11 +36,12 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
             subFrom.branchId = "90091";
             common_service.post(res.queryCard.url,subFrom).then(function (data) {
                 var a = {};
-                a.code = "测试1312312313131"
+                a.code = "测试"
                 data.bsadata[0].product.push(a);
                 $scope.cardtype = data.bsadata;//后台返回样式
                 console.log(data.bsadata)
             })
+            //获取流水号
             subFrom = {};
             var COH = {};
             var CTL = {};
@@ -71,7 +72,20 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
                 var BDY = {};
                 var COH = {};
                 var CTL = {};
-                BDY = $scope.subFrom;
+                //修改BDY格式
+                BDY.cardName = $scope.subFrom.carditem.cardName;
+                BDY.idName = $scope.subFrom.idcard.cardName;
+                BDY.vcherNo = $scope.subFrom.idcard.vcherNo;
+                BDY.vcherType = $scope.subFrom.idcard.vcherType;
+                BDY.visBrno = $scope.subFrom.idcard.visBrno;
+                BDY.passWord = $scope.subFrom.passWord;
+                BDY.address = $scope.subFrom.personDetails.address;
+                BDY.companyName = $scope.subFrom.personDetails.companyName;
+                BDY.job = $scope.subFrom.personDetails.job;
+                BDY.personGender = $scope.subFrom.personDetails.personGender;
+                BDY.personName = $scope.subFrom.personDetails.personName;
+                BDY.phone = $scope.subFrom.personDetails.phone;
+                BDY.selectProduct = $scope.subFrom.selectProduct;
                 var now = new Date().Format("yyyy-MM-dd hh:mm:ss");
                 //COH
                 COH.TRANSDATE = now;
@@ -90,7 +104,7 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
                 COH.medium = "0000";
                 COH.consumerId = "301";
                 COH.TELLERWORKMODEL = "6";
-                COH.TRANSSERIALNO = $scope.transSerialNo;
+                COH.TRANSSERIALNO = $scope.transSerialNo.toString();
                 COH.TRANSINSTNO = "CN0019009";
                 COH.TRANSTIME = now;
                 COH.TRANSAUTHNO = "";
@@ -106,7 +120,9 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
                 subFrom.BDY = BDY;
                 subFrom.CTL = CTL;
                 subFrom.COH = COH;
+                console.log(subFrom)
                 common_service.post(res.TranServer.url,subFrom).then(function (data) {
+                    console.log(res.TranServer.url)
                     console.log(data);
                 })
             }
@@ -229,7 +245,8 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
         subFrom.branchId = "900001";
         common_service.post(res.singleCheck.url,subFrom).then(function (data) {
             console.log(data)
-            if(data.retCode == "TNCMCT08104"){//交易失败逻辑
+            if(data.retCode == "TDCMCT08006"){
+                alert(data.retMsg);
             }else{
                 $scope.idcardphoto = data.bsadata.photo;
                 var idcard = {};
@@ -238,20 +255,16 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
                 idcard.name = "杨超";
                 idcard.visBrno = data.bsadata.visBrno;
                 $scope.subFrom.idcard = idcard;
-
+                $scope.iddetails = true;
                 console.log(data.bsadata)
             }
 
         })
+
         common_service.post(res.queryBlackList.url,subFrom).then(function (data) {
             console.log(data)
-            if(data.retCode == "TNCMCT08104"){
-                toastr['error'](data.retMsg+"将于2秒内退出");
-                $scope.iddetails = false;
-                $scope.takephoto  =false;
-                $timeout(function() {
-                    $state.go('dashboard')
-                },2000);
+            if(data.retCode == "TDCMCT08006"){
+                alert(data.retMsg);
             }else{
                 // $scope.idcardphoto = data.bsadata.photo;
                 // var idcard = {};
@@ -261,7 +274,6 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
                 // idcard.visBrno = data.bsadata.visBrno;
                 // $scope.subFrom.idcard = idcard;
                 // $scope.iddetails = true;
-                $scope.iddetails = true;//成功则进入下一页面
                 console.log(data.retMsg)
             }
 
@@ -292,16 +304,16 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
 
 
     /**----------------------------------模拟产品签约--------------------------------*/
-    // var productList = [
-    //     {"productName":"手机银行","option":[{"optionName":"开通","optionValue":"00"},{"optionName":"可指纹登录","optionValue":"01"},{"optionName":"支付限额","optionValue":"02"}]},
-    //     {"productName":"网上银行","option":[{"optionName":"开通","optionValue":"00"},{"optionName":"需要动态口令","optionValue":"01"},{"optionName":"转账限额","optionValue":"02"}]},
-    //     {"productName":"短信通","option":[{"optionName":"开通","optionValue":"00"},{"optionName":"需要动态口令","optionValue":"01"},{"optionName":"转账限额","optionValue":"02"}]},
-    //     {"productName":"电话银行","option":[{"optionName":"开通","optionValue":"00"},{"optionName":"需要动态口令","optionValue":"01"},{"optionName":"转账限额","optionValue":"02"}]},
-    //     {"productName":"电话银行","option":[{"optionName":"开通","optionValue":"00"},{"optionName":"需要动态口令","optionValue":"01"},{"optionName":"转账限额","optionValue":"02"}]},
-    //                     ];
-    // $scope.productList = productList;
+        // var productList = [
+        //     {"productName":"手机银行","option":[{"optionName":"开通","optionValue":"00"},{"optionName":"可指纹登录","optionValue":"01"},{"optionName":"支付限额","optionValue":"02"}]},
+        //     {"productName":"网上银行","option":[{"optionName":"开通","optionValue":"00"},{"optionName":"需要动态口令","optionValue":"01"},{"optionName":"转账限额","optionValue":"02"}]},
+        //     {"productName":"短信通","option":[{"optionName":"开通","optionValue":"00"},{"optionName":"需要动态口令","optionValue":"01"},{"optionName":"转账限额","optionValue":"02"}]},
+        //     {"productName":"电话银行","option":[{"optionName":"开通","optionValue":"00"},{"optionName":"需要动态口令","optionValue":"01"},{"optionName":"转账限额","optionValue":"02"}]},
+        //     {"productName":"电话银行","option":[{"optionName":"开通","optionValue":"00"},{"optionName":"需要动态口令","optionValue":"01"},{"optionName":"转账限额","optionValue":"02"}]},
+        //                     ];
+        // $scope.productList = productList;
 
-    //确认签约
+        //确认签约
     card.sign = function (pageflag) {
         //组装数据展示
         var selectProduct = [];
@@ -333,7 +345,6 @@ angular.module('myApp').controller('actcard_controller', function($scope, $inter
         card.next(pageflag);
 
     }
-
     Date.prototype.Format = function (fmt) { //author: meizz
         var o = {
             "M+": this.getMonth() + 1, //月份
